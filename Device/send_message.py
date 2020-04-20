@@ -6,12 +6,11 @@ from handle_sensor_data import generate_data
 from device_configuration import DEVICE_CONN_STR
 
 
-async def send_single_message():
+async def send_single_message(message_body):
     device_client = IoTHubDeviceClient.create_from_connection_string(DEVICE_CONN_STR)
 
     await device_client.connect()
 
-    message_body = generate_data()
     message = Message(str(message_body), content_type='application/json')
     await device_client.send_message(message)
 
@@ -19,4 +18,4 @@ async def send_single_message():
 
 
 if __name__ == "__main__":
-    asyncio.run(send_single_message())
+    asyncio.run(send_single_message(generate_data()))
