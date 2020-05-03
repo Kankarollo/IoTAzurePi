@@ -15,7 +15,3 @@ async def send_single_message(message_body):
     await device_client.send_message(message)
 
     await device_client.disconnect()
-
-
-if __name__ == "__main__":
-    asyncio.run(send_single_message(generate_data()))
