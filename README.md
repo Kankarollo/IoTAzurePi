@@ -14,3 +14,5 @@ platformie chmurowej, jak i wysyłanie wiadomości (na przykład danych
 konfiguracyjnych) z panelu administracyjnego w chmurze do urządzeń
 pomiarowych. Dodatkowo panel administracyjny powinien umożliwiać
 przeprowadzenia analiz na danych pomiarowych.
+
+Pomysł jest na stworzenie rozproszonego systemu kontroli roślinek. Mamy kilka roślinek w kilku miejscach i do kazdego jest podłączona Raspberka z czujnikami wilgotności i temperatury i z pompką z wodą. Za pomocą systemu opartego na Azurze można będzie wizualizować dane, analizować czy jest lepiej u roślinki czy gorzej i sterować pompką z wodą.
