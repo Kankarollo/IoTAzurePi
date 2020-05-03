@@ -3,11 +3,11 @@ import asyncio
 from azure.iot.device.aio import IoTHubDeviceClient
 from azure.iot.device import Message
 from handle_sensor_data import generate_data
-from device_configuration import DEVICE_CONN_STR
+from device_config import DEVICE_CONN_STRING
 
 
 async def send_single_message(message_body):
-    device_client = IoTHubDeviceClient.create_from_connection_string(DEVICE_CONN_STR)
+    device_client = IoTHubDeviceClient.create_from_connection_string(DEVICE_CONN_STRING)
 
     await device_client.connect()
 
