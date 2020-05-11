@@ -16,4 +16,4 @@ pomiarowych. Dodatkowo panel administracyjny powinien umożliwiać
 przeprowadzenia analiz na danych pomiarowych.
 
 ## Idea na zastosowanie ##
-Pomysł jest na stworzenie rozproszonego systemu kontroli roślinek. Mamy kilka roślinek w kilku miejscach i do kazdego jest podłączona Raspberka z czujnikami wilgotności i temperatury i z pompką z wodą. Za pomocą systemu opartego na Azurze można będzie wizualizować dane, analizować czy jest lepiej u roślinki czy gorzej i sterować pompką z wodą.
+[Inspiracja.](https://www.hackster.io/105122/smart-plant-iot-59cbc3) Pomysł jest na stworzenie rozproszonego systemu kontroli roślinek. Mamy kilka roślinek w kilku miejscach i do kazdego jest podłączona Raspberka z czujnikami wilgotności i temperatury i z pompką z wodą. Za pomocą systemu opartego na Azurze można będzie wizualizować dane, analizować czy jest lepiej u roślinki czy gorzej i sterować pompką z wodą.
