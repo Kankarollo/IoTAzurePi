@@ -16,4 +16,11 @@ pomiarowych. Dodatkowo panel administracyjny powinien umożliwiać
 przeprowadzenia analiz na danych pomiarowych.
 
 ## Idea na zastosowanie ##
-[Inspiracja.](https://www.hackster.io/105122/smart-plant-iot-59cbc3) Pomysł jest na stworzenie rozproszonego systemu kontroli roślinek. Mamy kilka roślinek w kilku miejscach i do kazdego jest podłączona Raspberka z czujnikami wilgotności i temperatury i z pompką z wodą. Za pomocą systemu opartego na Azurze można będzie wizualizować dane, analizować czy jest lepiej u roślinki czy gorzej i sterować pompką z wodą.
+[Inspiracja.](https://www.hackster.io/105122/smart-plant-iot-59cbc3) 
+
+IoT ogród. Poprzez aplikację Azure WebApp użytkownik mógłby zarządzać swoimi roślinami oraz obserwować dane wysyłane z czujników (temperatura, wilgotność pomieszczenia, wilgotność gleby, natężenie światła) za pomocą prostego GUI. Znajdowałyby się tam odpowiednie funkcję:
+- Wizualizacja danych otrzymanych z czujników
+- Możliwość podlania rośliny za pomocą wysłania wiadomości sterującej do raspberryPi, która uruchomi pompkę z wodą
+- Przechowywanie danych w bazie danych CosmoDB
+
+![Schemat projektu](doc/media/Schemat.png)
