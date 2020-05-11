@@ -5,7 +5,8 @@ import threading
 from azure.iot.device.aio import IoTHubDeviceClient
 from device_config import DEVICE_CONN_STRING
 
-async def main():
+
+async def receive_cloud_message():
     device_client = IoTHubDeviceClient.create_from_connection_string(DEVICE_CONN_STRING)
 
     await device_client.connect()
@@ -31,6 +32,3 @@ async def main():
     await user_finished
 
     await device_client.disconnect()
-
-if __name__ == "__main__":
-    asyncio.run(main())
