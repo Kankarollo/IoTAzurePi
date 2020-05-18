@@ -2,12 +2,12 @@ import os
 import asyncio
 from azure.iot.device.aio import IoTHubDeviceClient
 from azure.iot.device import Message
-from handle_sensor_data import generate_data
-from device_config import DEVICE_CONN_STRING
+from handle_sensor_data import generate_data, read_data
+from device_configuration import DEVICE_CONN_STR
 
 
 async def send_single_message(message_body):
-    device_client = IoTHubDeviceClient.create_from_connection_string(DEVICE_CONN_STRING)
+    device_client = IoTHubDeviceClient.create_from_connection_string(DEVICE_CONN_STR)
 
     await device_client.connect()
 
@@ -15,3 +15,7 @@ async def send_single_message(message_body):
     await device_client.send_message(message)
 
     await device_client.disconnect()
+
+if __name__ == "__main__":
+    # jesli nie ma sie podlaczonego rpi to zmienic na generate_data
+    asyncio.run(send_single_message(read_data()))
