@@ -27,7 +27,7 @@ def read_data_DHT11():
     # 11 stand for DHT-11 and 17 stands for GPIO pin
     humidity, temperature = Adafruit_DHT.read_retry(11, 17)
     # print('Temp={0:0.1f}*  Humidity={1:0.1f}%'.format(temperature, humidity))
-    return temperature, humidity
+    return humidity, temperature
 
 def convert_GY30_to_Number(data):
   # Simple function to convert 2 bytes of data
