@@ -16,6 +16,6 @@ async def send_single_message(message_body):
 
     await device_client.disconnect()
 
-
 if __name__ == "__main__":
+    # jesli nie ma sie podlaczonego rpi to zmienic na generate_data
     asyncio.run(send_single_message(read_data()))
