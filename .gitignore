@@ -1,1 +1,4 @@
 node_modules
+.vscode
+iot-azure-pi-venv
+.deployment
