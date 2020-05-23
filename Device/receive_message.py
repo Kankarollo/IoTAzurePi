@@ -3,7 +3,7 @@ import asyncio
 from six.moves import input
 import threading
 from azure.iot.device.aio import IoTHubDeviceClient
-from device_config import DEVICE_CONN_STRING
+from config import DEVICE_CONN_STRING
 
 
 async def receive_cloud_message():
