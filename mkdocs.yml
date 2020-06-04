@@ -1,0 +1,6 @@
+site_name: Projekt Grupowy
+nav:
+  - Home: index.md
+  - Czujniki: opis_czujnikow.md
+theme: readthedocs
+

@@ -6,16 +6,20 @@ Do zrealizowania części sprzętowej skorzystano z modułów komunikacyjnych wb
 ---------
 ## [Czujnik temperatury i wilgotności DHT11](#czujnik-temperatury-i-wilgotności-dht11)
 
-![alt text](media/GPIO-Pinout-Diagram-2.png)
+
+<img src="../media/GPIO-Pinout-Diagram-2.png" alt="drawing" width="600" height="600"/>
 
 Do pomiaru temperatury i wilgotności użyto czujnik wilgotności DHT11. Jest to czujnik cyfrowy z interfejsem jednoprzewodowym. Zakres jego pracy dla temperatury to od -20 °C do +60 °C, a wilgotności od 5 % do 95 % RH. Czujnik ma rozdzielczość 8-bitową, przez co jego dokładność to 1°C oraz ±1 % RH.
 
-![alt text](media/dht11.png)
+<img src="../media/dht11.png" alt="drawing" width="400" height="400"/>
+
 
 Czujnik podłączony został do napięcia 3.3 V urządzenia Raspberry Pi (pin 1), uziemienie do pinu 9 oraz dane zostały podłączone do GPIO 17 dostępnego na pinie 11.
 W celu poprawnej komunikacji jednoprzewodowej konieczne jest zastosowanie rezystora pomiędzy napięciem a linią danych. Rezystor powinien mieć wartość o 4.7k do 10k Ohm. Połączenie czujnika z RPi zostało przedstawione na poniższym rysunku:
 
-![alt text](media/DHT11_pi.png)
+
+<img src="../media/DHT11_pi.png" alt="drawing" width="400" height="400"/>
+
 
 Do połączenia się z czujnikiem wykorzystano gotową bibliotekę od Adafruit. W celu instalacji tej biblioteki trzeba wykonać następujące kroki:
 Zainstalować potrzebne narzędzia:
@@ -56,11 +60,11 @@ Do komunikacji z czujnikiem został napisany skrypt w języku Python. Przykłado
 
 Zastosowanym czujnikiem światła jest BH1750. Jest to czujnik przetwarzający natężenie światła o długości z zakresu od 320 nm do 1050 nm na mierzalną (np. poprzez zastosowanie mikrokontrolera) proporcjonalną częstotliwość. Zakres działania czujnika to 1-65535 lx (luksów) z rozdzielczością 1 lub 4 lx w zależności od wybranego trybu pracy. Komunikuje się poprzez interfejs I2C (TWI), czyli dwie linie: danych - SDA i zegarową SCL.
 
-![alt text](media/Czujnik_natenia_wiata_GY-30_-_BH1750_1.jpg)
+<img src="../media/Czujnik_natenia_wiata_GY-30_-_BH1750_1.jpg" alt="drawing" width="400" height="400"/>
 
 Czujnik podłączony został do napięcia 3.3 V z urządzenia Raspberry Pi, uziemienie do GND oraz dane zostały podłączone do GPIO 2 (SDA) oraz do GPIO 3 (SCL) został podłączony zegar interfejsu I2C.
 
-![alt text](media/BH1750-Module-Setup.png)
+<img src="../media/BH1750-Module-Setup.png" alt="drawing" width="400" height="400"/>
 
 Do komunikacji z czujnikiem wykorzystano magistralę I2C. Po podłączeniu pinu ADD do uziemienie urządzenie ma adres 0x23. Można ustawić różne tryby odczytu. Wykorzystany został tryb 0x20, jest to tryb umożliwiający odczyt z dokładnością do 1 lx oraz pozwalający na wyłączenie urządzenia po odczycie w celu oszczędzenia energii. Przykładowy kod w języku Python:
 
@@ -85,11 +89,12 @@ Zasilany jest napięciem od 3,3 V do 5 V.  Urządzenie składa się z trzech cz�
 
 Czujnik posiada wyjście cyfrowe D0 sygnalizujące przekroczenie ustawionej za pomocą potencjometru wartości oraz analogowe A0 przy pomocy którego uzyskuje się dokładną wartość wilgotności. Za pomocą potencjometru ustawiany jest próg, po którego przekroczeniu wyjście D0 przechodzi ze stanu wysokiego w stan niski. Czujnik posiada także wyjście analogowe A0, które należy podłączyć do wyprowadzenia przetwornika A/C, a następnie możliwe jest za pomocą interfejsu I2C połączenie z urządzeniem Raspberry Pi. 
 
-![alt text](media/gleba.png)
+
+<img src="../media/gleba.png" alt="drawing" width="400" height="400"/>
 
 ## [Pompa do wody](#pompa-do-wody) 
 
 Do podlewania rośliny w doniczce została wykorzystana pompka do wody działająca na bazie komutatorowego silnika prądu stałego. Pompa zasilana jest napięciem od 2.5 - 6 V. Prąd pobierany przez silnik wynosi 130-220 mA. Wydajność przepływu cieczy to 80-120 L/h. 
 Maksymalny prąd, który może być pobierany z zasilania 5V urządzenia Raspberry Pi to 300 mA, więc z urządzenia bez problemu można zasilić pompę do wody. Do wysterowania silnikiem został użyty mostek H L293D. 
 
-![alt text](media/pompka.png)
+<img src="../media/pompka.png" alt="drawing" width="400" height="400"/>
