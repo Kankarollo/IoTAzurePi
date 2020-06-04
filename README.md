@@ -1,6 +1,6 @@
 # IoTAzurePi
 
-Check full documentation - [https://www.hackster.io/105122/smart-plant-iot-59cbc3](https://www.hackster.io/105122/smart-plant-iot-59cbc3)
+Check full documentation - [https://kankarollo.github.io/IoTAzurePi/](https://kankarollo.github.io/IoTAzurePi/)
 
 ## 2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy 
 
