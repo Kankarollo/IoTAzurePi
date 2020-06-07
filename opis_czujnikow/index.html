@@ -65,6 +65,26 @@
     </ul>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../komunikacja/">Komunikacja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../analizaDanych/">Analiza danych</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cosmoDB/">CosmoDB</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../webAppGUI/">WebAbbGUI</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../dokumentacja/">Dokumentacja</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -133,6 +153,7 @@ Następnie zainstalować bibliotekę dla Pythona 2 i Pythona 3 za pomocą komend
     print('Failed to get reading. Try again!')
     sys.exit(1)
 </code></pre>
+<hr />
 <h2 id="czujnik-natezenia-swiata"><a href="#czujnik-natężenia-światła">Czujnik natężenia światła</a></h2>
 <p>Zastosowanym czujnikiem światła jest BH1750. Jest to czujnik przetwarzający natężenie światła o długości z zakresu od 320 nm do 1050 nm na mierzalną (np. poprzez zastosowanie mikrokontrolera) proporcjonalną częstotliwość. Zakres działania czujnika to 1-65535 lx (luksów) z rozdzielczością 1 lub 4 lx w zależności od wybranego trybu pracy. Komunikuje się poprzez interfejs I2C (TWI), czyli dwie linie: danych - SDA i zegarową SCL.</p>
 <p><img src="../media/Czujnik_natenia_wiata_GY-30_-_BH1750_1.jpg" alt="drawing" width="400" height="400"/></p>
@@ -153,10 +174,12 @@ Następnie zainstalować bibliotekę dla Pythona 2 i Pythona 3 za pomocą komend
     data = bus.read_i2c_block_data(0x23,0x20)
     return convert_GY30_to_Number(data)
 </code></pre>
+<hr />
 <h2 id="czujnik-wilgotnosci-gleby"><a href="#czujnik-wilgotności-gleby">Czujnik wilgotności gleby</a></h2>
 <p>Zasilany jest napięciem od 3,3 V do 5 V.  Urządzenie składa się z trzech części: sondy pomiarowej, modułu detektora oraz przewodów. Sondy należy połączyć z modułem głównym przy pomocy przewodów i umieścić w glebie, której wilgotność będzie mierzona.</p>
 <p>Czujnik posiada wyjście cyfrowe D0 sygnalizujące przekroczenie ustawionej za pomocą potencjometru wartości oraz analogowe A0 przy pomocy którego uzyskuje się dokładną wartość wilgotności. Za pomocą potencjometru ustawiany jest próg, po którego przekroczeniu wyjście D0 przechodzi ze stanu wysokiego w stan niski. Czujnik posiada także wyjście analogowe A0, które należy podłączyć do wyprowadzenia przetwornika A/C, a następnie możliwe jest za pomocą interfejsu I2C połączenie z urządzeniem Raspberry Pi. </p>
 <p><img src="../media/gleba.png" alt="drawing" width="400" height="400"/></p>
+<hr />
 <h2 id="pompa-do-wody"><a href="#pompa-do-wody">Pompa do wody</a></h2>
 <p>Do podlewania rośliny w doniczce została wykorzystana pompka do wody działająca na bazie komutatorowego silnika prądu stałego. Pompa zasilana jest napięciem od 2.5 - 6 V. Prąd pobierany przez silnik wynosi 130-220 mA. Wydajność przepływu cieczy to 80-120 L/h. 
 Maksymalny prąd, który może być pobierany z zasilania 5V urządzenia Raspberry Pi to 300 mA, więc z urządzenia bez problemu można zasilić pompę do wody. Do wysterowania silnikiem został użyty mostek H L293D. </p>
@@ -167,6 +190,8 @@ Maksymalny prąd, który może być pobierany z zasilania 5V urządzenia Raspber
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../komunikacja/" class="btn btn-neutral float-right" title="Komunikacja">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -197,6 +222,8 @@ Maksymalny prąd, który może być pobierany z zasilania 5V urządzenia Raspber
       
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../komunikacja/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

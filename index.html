@@ -50,15 +50,35 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#2ksde2020-rozproszony-system-monitoringu-zrealizowany-w-oparciu-o-chmure-i-internet-rzeczy">2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy</a>
+    <li class="toctree-l2"><a class="reference internal" href="#opis-projektu">Opis projektu</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#idea-na-zastosowanie">Idea na zastosowanie</a>
+    <li class="toctree-l2"><a class="reference internal" href="#zastosowanie-projektu-iot-ogrod">Zastosowanie projektu - IoT ogród</a>
     </li>
     </ul>
                     </li>
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="opis_czujnikow/">Czujniki</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="komunikacja/">Komunikacja</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="analizaDanych/">Analiza danych</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="cosmoDB/">CosmoDB</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="webAppGUI/">WebAbbGUI</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="dokumentacja/">Dokumentacja</a>
                     </li>
                 </ul>
       </div>
@@ -93,8 +113,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="iotazurepi">IoTAzurePi</h1>
-<h2 id="2ksde2020-rozproszony-system-monitoringu-zrealizowany-w-oparciu-o-chmure-i-internet-rzeczy">2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy</h2>
+                <h1 id="iotazurepi-2ksde2020-rozproszony-system-monitoringu-zrealizowany-w-oparciu-o-chmure-i-internet-rzeczy">IoTAzurePi - 2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy</h1>
+<h2 id="opis-projektu"><a href="#opis-projektu">Opis projektu</a></h2>
 <p>Celem projektu jest opracowanie rozproszonego systemu monitorowania,
 zrealizowanego korzystając z chmury (AWS, Azure), oraz koncepcji
 internetu rzeczy. W ramach projektu należy przygotować urządzenia
@@ -107,11 +127,12 @@ platformie chmurowej, jak i wysyłanie wiadomości (na przykład danych
 konfiguracyjnych) z panelu administracyjnego w chmurze do urządzeń
 pomiarowych. Dodatkowo panel administracyjny powinien umożliwiać
 przeprowadzenia analiz na danych pomiarowych.</p>
-<h2 id="idea-na-zastosowanie">Idea na zastosowanie</h2>
+<hr />
+<h2 id="zastosowanie-projektu-iot-ogrod"><a href="#zastosowanie-projektu---iot-ogród">Zastosowanie projektu - IoT ogród</a></h2>
 <p><a href="https://www.hackster.io/105122/smart-plant-iot-59cbc3">Inspiracja.</a> </p>
-<p>IoT ogród. Poprzez aplikację Azure WebApp użytkownik mógłby zarządzać swoimi roślinami oraz obserwować dane wysyłane z czujników (temperatura, wilgotność pomieszczenia, wilgotność gleby, natężenie światła) za pomocą prostego GUI. Znajdowałyby się tam odpowiednie funkcję:
+<p>Poprzez aplikację WebAppGUI użytkownik mógłby zarządzać swoimi roślinami oraz obserwować dane wysyłane z czujników (temperatura, wilgotność pomieszczenia, wilgotność gleby, natężenie światła) za pomocą prostego GUI. Znajdowałyby się tam odpowiednie funkcję:
 - Wizualizacja danych otrzymanych z czujników
-- Możliwość podlania rośliny za pomocą wysłania wiadomości sterującej do raspberryPi, która uruchomi pompkę z wodą
+- Możliwość sterowania parametrami takimi jak wilgotność gleby czy natężenie światła za pomocą pompki z wodą oraz żarówką, które są sterowane poprzez RaspberryPi.
 - Przechowywanie danych w bazie danych CosmoDB</p>
 <p><img src="media/Schemat.png" alt="drawing" width="600" height="800"/></p>
               
@@ -167,5 +188,5 @@ przeprowadzenia analiz na danych pomiarowych.</p>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-06-04 22:31:22.068278+00:00
+Build Date UTC : 2020-06-07 22:30:21.381075+00:00
 -->
