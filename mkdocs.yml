@@ -2,5 +2,10 @@ site_name: Projekt Grupowy
 nav:
   - Home: index.md
   - Czujniki: opis_czujnikow.md
+  - Komunikacja: komunikacja.md
+  - Analiza danych: analizaDanych.md
+  - CosmoDB: cosmoDB.md
+  - WebAbbGUI: webAppGUI.md
+  - Dokumentacja: dokumentacja.md
 theme: readthedocs
 

@@ -54,7 +54,7 @@ Do komunikacji z czujnikiem został napisany skrypt w języku Python. Przykłado
         print('Failed to get reading. Try again!')
         sys.exit(1)
         
-
+---------
 
 ## [Czujnik natężenia światła](#czujnik-natężenia-światła)
 
@@ -83,6 +83,7 @@ Do komunikacji z czujnikiem wykorzystano magistralę I2C. Po podłączeniu pinu 
         data = bus.read_i2c_block_data(0x23,0x20)
         return convert_GY30_to_Number(data)
 
+---------
 ## [Czujnik wilgotności gleby](#czujnik-wilgotności-gleby)
 
 Zasilany jest napięciem od 3,3 V do 5 V.  Urządzenie składa się z trzech części: sondy pomiarowej, modułu detektora oraz przewodów. Sondy należy połączyć z modułem głównym przy pomocy przewodów i umieścić w glebie, której wilgotność będzie mierzona.
@@ -92,6 +93,7 @@ Czujnik posiada wyjście cyfrowe D0 sygnalizujące przekroczenie ustawionej za p
 
 <img src="../media/gleba.png" alt="drawing" width="400" height="400"/>
 
+---------
 ## [Pompa do wody](#pompa-do-wody) 
 
 Do podlewania rośliny w doniczce została wykorzystana pompka do wody działająca na bazie komutatorowego silnika prądu stałego. Pompa zasilana jest napięciem od 2.5 - 6 V. Prąd pobierany przez silnik wynosi 130-220 mA. Wydajność przepływu cieczy to 80-120 L/h. 
