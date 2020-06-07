@@ -9,7 +9,7 @@ WebAppGUI jest to aplikacja webowa przeznaczona dla użytkownika w celu zarządz
 -----------------------
 ## [Schemat aplikacji](#schemat-aplikacji) 
 
-
+<img src="../media/szkicWebAppGUI.PNG" alt="drawing" width="600" height="600"/>
 
 Na powyższym rysunku jest pokazany szkic projektu aplikacji WebAppGUI.
 
