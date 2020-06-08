@@ -24,6 +24,7 @@ przeprowadzenia analiz na danych pomiarowych.
 
 
 Poprzez aplikację WebAppGUI użytkownik mógłby zarządzać swoimi roślinami oraz obserwować dane wysyłane z czujników (temperatura, wilgotność pomieszczenia, wilgotność gleby, natężenie światła) za pomocą prostego GUI. Znajdowałyby się tam odpowiednie funkcję:
+
 - Wizualizacja danych otrzymanych z czujników
 - Możliwość sterowania parametrami takimi jak wilgotność gleby czy natężenie światła za pomocą pompki z wodą oraz żarówką, które są sterowane poprzez RaspberryPi.
 - Przechowywanie danych w bazie danych CosmoDB
