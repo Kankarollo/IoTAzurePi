@@ -1,7 +1,10 @@
 # IoTAzurePi
 
+<<<<<<< HEAD
 Check full documentation - [https://kankarollo.github.io/IoTAzurePi/](https://kankarollo.github.io/IoTAzurePi/)
 
+=======
+>>>>>>> 639f7fa50f260a496b57a607e53a7b2b571156f7
 ## 2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy 
 
 Celem projektu jest opracowanie rozproszonego systemu monitorowania,
@@ -16,6 +19,7 @@ platformie chmurowej, jak i wysyłanie wiadomości (na przykład danych
 konfiguracyjnych) z panelu administracyjnego w chmurze do urządzeń
 pomiarowych. Dodatkowo panel administracyjny powinien umożliwiać
 przeprowadzenia analiz na danych pomiarowych.
+<<<<<<< HEAD
 
 ## Idea na zastosowanie ##
 [Inspiracja.](https://www.hackster.io/105122/smart-plant-iot-59cbc3) 
@@ -26,3 +30,5 @@ IoT ogród. Poprzez aplikację Azure WebApp użytkownik mógłby zarządzać swo
 - Przechowywanie danych w bazie danych CosmoDB
 
 ![Schemat projektu](doc/media/Schemat.png)
+=======
+>>>>>>> 639f7fa50f260a496b57a607e53a7b2b571156f7
