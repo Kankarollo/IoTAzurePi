@@ -62,6 +62,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#wysyanie-danych-z-iot-device-do-iot-hub">Wysyłanie danych z IoT Device do IoT Hub</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uruchomienie">Uruchomienie.</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#komunikacja-dwustronna-iothub-iot-device">Komunikacja dwustronna IoTHub - IoT Device</a>
     </li>
     </ul>
@@ -138,8 +140,36 @@
 </ul>
 <hr />
 <h2 id="wysyanie-danych-z-iot-device-do-iot-hub"><a href="#wysyłanie-danych-z-iot-device-do-iot-hub">Wysyłanie danych z IoT Device do IoT Hub</a></h2>
-<p>Prace nad wysyłaniem danych z IoT Device do IoT Hub są przeprowadzane na <em>branch'u</em> <a href="https://github.com/Kankarollo/IoTAzurePi/tree/device_develop"><em>device_develop</em></a>.</p>
-<p>TODO</p>
+<p>Prace nad czujnikami oraz wysyłaniem danych z IoT Device do IoT Hub są przeprowadzane na <em>branch'u</em> <a href="https://github.com/Kankarollo/IoTAzurePi/tree/device_develop"><em>device_develop</em></a>.</p>
+<h2 id="uruchomienie">Uruchomienie.</h2>
+<p>Aby uruchomić kod znajdujący sie na tym branchu należy:</p>
+<ul>
+<li>
+<p>Ściągnąć repozytorium</p>
+<pre><code>git clone https://github.com/Kankarollo/IoTAzurePi.git
+</code></pre>
+</li>
+<li>
+<p>Przenieść się na branch device_develop</p>
+<pre><code>git checkout origin\device_develop
+</code></pre>
+</li>
+<li>
+<p>Zainstalować wymagane biblioteki :</p>
+<pre><code>python -m pip -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p>Ustawić zmienne środowiskowe DEVICE_CONN_STRING. Wartości tych zmiennych są w iot hubie (iot hub/Explorers/IoT devices/nazwa_urządzenia/) i jest to pole Primary Connection String.</p>
+<pre><code>export DEVICE_CONN_STRING='device connection string'
+</code></pre>
+</li>
+<li>
+<p>Uruchom program main.py</p>
+<pre><code>python main.py
+</code></pre>
+</li>
+</ul>
 <hr />
 <h2 id="komunikacja-dwustronna-iothub-iot-device"><a href="#komunikacja-dwustronna-iothub---iot-device">Komunikacja dwustronna IoTHub - IoT Device</a></h2>
 <p>Demo komunikacji dwustronnej zostało opracowane na <em>branch'u</em> <a href="https://github.com/Kankarollo/IoTAzurePi/tree/concurrent_device_work"><em>concurrent_device</em></a>.</p>
