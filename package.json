@@ -25,6 +25,7 @@
     "express": ">=4.17.1",
     "minimist": ">=1.2.5",
     "mongodb": "^3.5.7",
+    "mongoose": "^5.10.9",
     "rhea-promise": "^1.0.0",
     "ws": ">=7.1.2"
   }

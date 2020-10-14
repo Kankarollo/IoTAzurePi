@@ -3,7 +3,8 @@ const http = require('http');
 const WebSocket = require('ws');
 const path = require('path');
 const EventHubReader = require('./scripts/event-hub-reader.js');
-const DBHandler = require('./scripts/db-handler.js');
+const mongoose = require("mongoose");
+const iotData = require("./models/iotDataModel");
 
 const iotHubConnectionString = process.env.IotHubConnectionString;
 if (!iotHubConnectionString) {
@@ -20,17 +21,18 @@ if (!eventHubConsumerGroup) {
 }
 console.log(`Using event hub consumer group [${eventHubConsumerGroup}]`);
 
-const mongoDBConnectionString = process.env.mongoDBConnectionString;
-if (!mongoDBConnectionString) {
-  console.error(`Environment variable mongoDBConnectionString must be specified.`);
-  //return;
+const mongoDBConnectionString = process.env.MongoDBConnectionString;
+if (mongoDBConnectionString) {
+  mongoose.connect(mongoDBConnectionString, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
+  const connection = mongoose.connection;
+  connection.once("open", function () {
+    console.log("MongoDB database connection established successfully");
+  });
 }
-console.log(`Using MongoDB connection string [${mongoDBConnectionString}]`);
 
-// Redirect requests to the public subdirectory to the root
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((req, res /* , next */) => {
+app.use((req, res) => {
   res.redirect('/');
 });
 
@@ -55,18 +57,26 @@ server.listen(process.env.PORT || '3000', () => {
 });
 
 const eventHubReader = new EventHubReader(iotHubConnectionString, eventHubConsumerGroup);
-const dbHandler = new DBHandler(mongoDBConnectionString);
 
 (async () => {
   await eventHubReader.startReadMessage((message, date, deviceId) => {
     try {
-      const payload = {
+      // set received data
+      const receivedData = new iotData({
         IotData: message,
         MessageDate: date || Date.now().toISOString(),
         DeviceId: deviceId,
-      };
-      dbHandler.insert(payload);
-      wss.broadcast(JSON.stringify(payload));
+      });
+
+      // send data to all scripts through web sockets
+      wss.broadcast(JSON.stringify(receivedData));
+
+      // save received data to mongoDB if there is connection to database
+      if (mongoDBConnectionString) {
+        receivedData.save().then(result => {
+          console.log("Data saved succesfully!");
+        });
+      }
     } catch (err) {
       console.error('Error broadcasting: [%s] from [%s].', err, message);
     }
