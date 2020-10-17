@@ -4,6 +4,7 @@ from six.moves import input
 import threading
 from azure.iot.device.aio import IoTHubDeviceClient
 from config import DEVICE_CONN_STRING
+from analyze_message import analyze_msg
 
 
 async def receive_cloud_message():
@@ -16,6 +17,7 @@ async def receive_cloud_message():
             message = await device_client.receive_message()
             print("the data in the message received was ")
             print(message.data)
+            analyze_msg(message.data)
 
     def stdin_listener():
         while True:
