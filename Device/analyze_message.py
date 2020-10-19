@@ -9,7 +9,7 @@ def analyze_msg(data):
     elif(data == b'lightOff'):
         GPIO.output(27, GPIO.LOW)
     elif(data == b'pumpOn'):
-        GPIO.output(22, GPIO.LOW)
+        GPIO.output(22, GPIO.HIGH)
     elif(data == b'pumpOff'):
         GPIO.output(22, GPIO.LOW)
     elif(data == b'readData'):

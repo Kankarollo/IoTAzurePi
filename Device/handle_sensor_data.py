@@ -12,12 +12,9 @@ def read_data():
     humidity, temperature = read_data_DHT11()
     light = read_data_GY30()
     ground = read_ground_humidity()
-    if humidity is not None and temperature is not None and light is not None:
-        print("Temp={}*  Humidity={} Light={}, Ground={}%".format(temperature, humidity, light, ground))
-        return {"temperature": temperature, "humidity": humidity,
-        "light": light, "ground": ground}
-    else:
-        return {}
+    print("Temp={}*  Humidity={} Light={}, Ground={}%".format(temperature, humidity, light, ground))
+    return {"temperature": temperature, "humidity": humidity, "light": light, "ground": ground}
+
 
 def read_data_DHT11():
 
