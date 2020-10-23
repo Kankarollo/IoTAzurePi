@@ -7,7 +7,8 @@ let measureSchema = {
     IotData: {
         humidity: Number,
         temperature: Number,
-        temperatureAlert: Boolean
+        light: Number,
+        ground: Number,
     },
 };
 

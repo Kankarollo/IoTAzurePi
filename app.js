@@ -2,39 +2,15 @@ const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 const path = require('path');
-const EventHubReader = require('./scripts/event-hub-reader.js');
-const mongoose = require("mongoose");
+const EventHubReader = require('./utils/ms_scripts/event-hub-reader.js');
 const iotData = require("./models/iotDataModel");
+const { iotHubConnectionString, eventHubConsumerGroup, mongoDBConnectionString } = require("./utils/setup.js");
 
-const iotHubConnectionString = process.env.IotHubConnectionString;
-if (!iotHubConnectionString) {
-  console.error(`Environment variable IotHubConnectionString must be specified.`);
-  return;
-}
-console.log(`Using IoT Hub connection string [${iotHubConnectionString}]`);
+var indexRouter = require("./routes/index");
 
-const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
-console.log(eventHubConsumerGroup);
-if (!eventHubConsumerGroup) {
-  console.error(`Environment variable EventHubConsumerGroup must be specified.`);
-  return;
-}
-console.log(`Using event hub consumer group [${eventHubConsumerGroup}]`);
-
-const mongoDBConnectionString = process.env.MongoDBConnectionString;
-if (mongoDBConnectionString) {
-  mongoose.connect(mongoDBConnectionString, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true });
-  const connection = mongoose.connection;
-  connection.once("open", function () {
-    console.log("MongoDB database connection established successfully");
-  });
-}
-
-const app = express();
+var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((req, res) => {
-  res.redirect('/');
-});
+app.use('/', indexRouter);
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
@@ -57,7 +33,7 @@ server.listen(process.env.PORT || '3000', () => {
 });
 
 const eventHubReader = new EventHubReader(iotHubConnectionString, eventHubConsumerGroup);
-
+const tmp = require("./utils/send_message.js");
 (async () => {
   await eventHubReader.startReadMessage((message, date, deviceId) => {
     try {
