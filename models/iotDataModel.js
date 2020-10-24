@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const config = require("../utils/config");
+const config = require("../utils/config").mongo;
 
 let measureSchema = {
     MessageDate: Date,
@@ -12,4 +12,4 @@ let measureSchema = {
     },
 };
 
-module.exports = mongoose.model(config.mongo.db_collection, measureSchema);
+module.exports = mongoose.model(config.db_collection, measureSchema);

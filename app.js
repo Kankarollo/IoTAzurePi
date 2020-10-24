@@ -5,6 +5,8 @@ const path = require('path');
 const EventHubReader = require('./utils/ms_scripts/event-hub-reader.js');
 const iotData = require("./models/iotDataModel");
 const { iotHubConnectionString, eventHubConsumerGroup, mongoDBConnectionString } = require("./utils/setup.js");
+const config = require("./utils/config").app;
+const dataRequester = require("./utils/dataRequester.js");
 
 var indexRouter = require("./routes/index");
 
@@ -28,12 +30,11 @@ wss.broadcast = (data) => {
   });
 };
 
-server.listen(process.env.PORT || '3000', () => {
+server.listen(config.port, () => {
   console.log('Listening on %d.', server.address().port);
 });
 
 const eventHubReader = new EventHubReader(iotHubConnectionString, eventHubConsumerGroup);
-const tmp = require("./utils/send_message.js");
 (async () => {
   await eventHubReader.startReadMessage((message, date, deviceId) => {
     try {
