@@ -11,18 +11,7 @@ var devices = [];
 
 // function requesting data from all iot hub devices
 async function requestData(deviceID) {
-    let deviceClient = Client.fromConnectionString(iotHubConnectionString);
-    deviceClient.open(function (err) {
-        if (err) {
-            console.error('Could not connect: ' + err.message);
-        } else {
-            console.log('Client connected');
-
-            setInterval(function () {
-                sendMessage(deviceClient, config.message, deviceID)
-            }, config.timeout);
-        }
-    });
+    setInterval(function () { sendMessage(config.message, deviceID) }, config.timeout);
 }
 
 (async () => {
