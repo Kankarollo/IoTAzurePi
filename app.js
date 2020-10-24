@@ -7,6 +7,7 @@ const iotData = require("./models/iotDataModel");
 const { iotHubConnectionString, eventHubConsumerGroup, mongoDBConnectionString } = require("./utils/setup.js");
 const config = require("./utils/config").app;
 const dataRequester = require("./utils/dataRequester.js");
+const eventHubReader = new EventHubReader(iotHubConnectionString, eventHubConsumerGroup);
 
 var indexRouter = require("./routes/index");
 
@@ -34,7 +35,6 @@ server.listen(config.port, () => {
   console.log('Listening on %d.', server.address().port);
 });
 
-const eventHubReader = new EventHubReader(iotHubConnectionString, eventHubConsumerGroup);
 (async () => {
   await eventHubReader.startReadMessage((message, date, deviceId) => {
     try {

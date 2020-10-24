@@ -1,5 +1,5 @@
 const config = require("./config").requester;
-const iotHubConnectionString = require("./setup.js");
+const iotHubConnectionString = require("./setup.js").iotHubConnectionString;
 
 var Client = require('azure-iothub').Client;
 var Registry = require('azure-iothub').Registry;
