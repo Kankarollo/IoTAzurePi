@@ -2,6 +2,7 @@ from handle_sensor_data import read_data
 import RPi.GPIO as GPIO
 from send_message import send_single_message
 from handle_sensor_data import read_data
+import logging
 
 def analyze_msg(data):
     if(data == b'lightOn'):
@@ -15,4 +16,4 @@ def analyze_msg(data):
     elif(data == b'readData'):
         send_single_message(read_data())
     else:
-        print("Unknow msg")
+        logging.info("-I- Received unknow msg")
