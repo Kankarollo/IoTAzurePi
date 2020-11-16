@@ -119,8 +119,47 @@ $(document).ready(() => {
   let needsAutoSelect = true;
   const deviceCount = document.getElementById('deviceCount');
   const listOfDevices = document.getElementById('listOfDevices');
+
+  var currentDeviceID = '';
+
+  const lightOnButton = document.getElementById('lightOnButton');
+  const lightOffButton = document.getElementById('lightOffButton');
+  const pumpOnButton = document.getElementById('pumpOnButton');
+  const pumpOffButton = document.getElementById('pumpOffButton');
+
+  function postMessage(message) {
+    fetch('/device/' + currentDeviceID, {method: 'POST', body: JSON.stringify({message: message}), headers: { "Content-Type": "application/json" }})
+    .then(function(response) {
+      if(response.ok) {
+        console.log('Click was recorded');
+        return;
+      }
+      throw new Error('Request failed.');
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
+
+  lightOnButton.addEventListener("click", function() {
+    postMessage('lightOn');
+  });
+
+  lightOffButton.addEventListener("click", function() {
+    postMessage('lightOff');
+  });
+
+  pumpOnButton.addEventListener("click", function() {
+    postMessage('pumpOn');
+  });
+
+  pumpOffButton.addEventListener("click", function() {
+    postMessage('pumpOff');
+  });
+
   function OnSelectionChange() {
     const device = trackedDevices.findDevice(listOfDevices[listOfDevices.selectedIndex].text);
+    currentDeviceID = listOfDevices[listOfDevices.selectedIndex].text;
     chartData.labels = device.timeData;
     chartData.datasets[0].data = device.temperatureData;
     chartData.datasets[1].data = device.humidityData;
