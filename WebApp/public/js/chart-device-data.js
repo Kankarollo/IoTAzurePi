@@ -14,17 +14,23 @@ $(document).ready(() => {
       this.timeData = new Array(this.maxLen);
       this.temperatureData = new Array(this.maxLen);
       this.humidityData = new Array(this.maxLen);
+      this.lightData = new Array(this.maxLen);
+      this.groundData = new Array(this.maxLen);
     }
 
-    addData(time, temperature, humidity) {
+    addData(time, temperature, humidity, light, ground) {
       this.timeData.push(time);
       this.temperatureData.push(temperature);
-      this.humidityData.push(humidity || null);
+      this.humidityData.push(humidity);
+      this.lightData.push(light);
+      this.groundData.push(ground);
 
       if (this.timeData.length > this.maxLen) {
         this.timeData.shift();
         this.temperatureData.shift();
         this.humidityData.shift();
+        this.lightData.shift();
+        this.groundData.shift();
       }
     }
   }
@@ -53,35 +59,72 @@ $(document).ready(() => {
 
   const trackedDevices = new TrackedDevices();
 
-  // Define the chart axes
-  const chartData = {
-    datasets: [
-      {
-        fill: false,
-        label: 'Temperature',
-        yAxisID: 'Temperature',
-        borderColor: 'rgba(255, 204, 0, 1)',
-        pointBoarderColor: 'rgba(255, 204, 0, 1)',
-        backgroundColor: 'rgba(255, 204, 0, 0.4)',
-        pointHoverBackgroundColor: 'rgba(255, 204, 0, 1)',
-        pointHoverBorderColor: 'rgba(255, 204, 0, 1)',
-        spanGaps: true,
-      },
-      {
-        fill: false,
-        label: 'Humidity',
-        yAxisID: 'Humidity',
-        borderColor: 'rgba(24, 120, 240, 1)',
-        pointBoarderColor: 'rgba(24, 120, 240, 1)',
-        backgroundColor: 'rgba(24, 120, 240, 0.4)',
-        pointHoverBackgroundColor: 'rgba(24, 120, 240, 1)',
-        pointHoverBorderColor: 'rgba(24, 120, 240, 1)',
-        spanGaps: true,
-      }
-    ]
-  };
+  // Define the charts axes
+  const chartData = [
+    {
+      datasets: [
+        {
+          fill: false,
+          label: 'Temperature',
+          yAxisID: 'Temperature',
+          borderColor: 'rgba(255, 204, 0, 1)',
+          pointBoarderColor: 'rgba(255, 204, 0, 1)',
+          backgroundColor: 'rgba(255, 204, 0, 0.4)',
+          pointHoverBackgroundColor: 'rgba(255, 204, 0, 1)',
+          pointHoverBorderColor: 'rgba(255, 204, 0, 1)',
+          spanGaps: true,
+        }
+      ]
+    },
+    {
+      datasets: [
+        {
+          fill: false,
+          label: 'Humidity',
+          yAxisID: 'Humidity',
+          borderColor: 'rgba(24, 120, 240, 1)',
+          pointBoarderColor: 'rgba(24, 120, 240, 1)',
+          backgroundColor: 'rgba(24, 120, 240, 0.4)',
+          pointHoverBackgroundColor: 'rgba(24, 120, 240, 1)',
+          pointHoverBorderColor: 'rgba(24, 120, 240, 1)',
+          spanGaps: true,
+        }
+      ]
+    },
+    {
+      datasets: [
+        {
+          fill: false,
+          label: 'Light',
+          yAxisID: 'Light',
+          borderColor: 'rgba(25, 204, 0, 1)',
+          pointBoarderColor: 'rgba(25, 204, 0, 1)',
+          backgroundColor: 'rgba(25, 204, 0, 0.4)',
+          pointHoverBackgroundColor: 'rgba(25, 204, 0, 1)',
+          pointHoverBorderColor: 'rgba(25, 204, 0, 1)',
+          spanGaps: true,
+        }
+      ]
+    },
+    {
+      datasets: [
+        {
+          fill: false,
+          label: 'Ground',
+          yAxisID: 'Ground',
+          borderColor: 'rgba(210,105,30, 1)',
+          pointBoarderColor: 'rgba(210,105,30, 1)',
+          backgroundColor: 'rgba(210,105,30, 0.4)',
+          pointHoverBackgroundColor: 'rgba(210,105,30, 1)',
+          pointHoverBorderColor: 'rgba(210,105,30, 1)',
+          spanGaps: true,
+        }
+      ]
+    }
+  ];
 
-  const chartOptions = {
+  const chartOptions = [
+    {
     scales: {
       yAxes: [{
         id: 'Temperature',
@@ -91,28 +134,78 @@ $(document).ready(() => {
           display: true,
         },
         position: 'left',
-      },
-      {
+        }]
+      }
+    },
+    {
+    scales: {
+      yAxes: [{
         id: 'Humidity',
         type: 'linear',
         scaleLabel: {
           labelString: 'Humidity (%)',
           display: true,
         },
-        position: 'right',
-      }]
-    }
-  };
-
-  // Get the context of the canvas element we want to select
-  const ctx = document.getElementById('iotChart').getContext('2d');
-  const myLineChart = new Chart(
-    ctx,
+        position: 'left',
+        }]
+      }
+    },
     {
-      type: 'line',
-      data: chartData,
-      options: chartOptions,
-    });
+    scales: {
+      yAxes: [{
+        id: 'Light',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'Light (lux)',
+          display: true,
+        },
+        position: 'left',
+        }]
+      }
+    },
+    {
+    scales: {
+      yAxes: [{
+        id: 'Ground',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'Ground (%)',
+          display: true,
+        },
+        position: 'left',
+        }]
+      }
+    }];
+
+  // Get the contexts of the canvas elements we want to select
+  const ctx = [
+    document.getElementById('temperatureChart').getContext('2d'), 
+    document.getElementById('humidityChart').getContext('2d'), 
+    document.getElementById('lightChart').getContext('2d'), 
+    document.getElementById('groundChart').getContext('2d')
+  ];
+
+  myCharts = new Array(chartData.length);
+
+  function createChart(index) {
+    myCharts[index] = new Chart(
+      ctx[index],
+      {
+        type: 'line',
+        data: chartData[index],
+        options: chartOptions[index],
+      });
+  }
+
+  for(var i = 0; i < myCharts.length; i++){
+    createChart(i);
+  }
+
+  function updateCharts() {
+    for(var i = 0; i < myCharts.length; i++){
+      myCharts[i].update();
+    }
+  }
 
   // Manage a list of devices in the UI, and update which device data the chart is showing
   // based on selection
@@ -140,30 +233,19 @@ $(document).ready(() => {
       console.log(error);
     });
   }
-
-  lightOnButton.addEventListener("click", function() {
-    postMessage('lightOn');
-  });
-
-  lightOffButton.addEventListener("click", function() {
-    postMessage('lightOff');
-  });
-
-  pumpOnButton.addEventListener("click", function() {
-    postMessage('pumpOn');
-  });
-
-  pumpOffButton.addEventListener("click", function() {
-    postMessage('pumpOff');
-  });
-
+  
   function OnSelectionChange() {
     const device = trackedDevices.findDevice(listOfDevices[listOfDevices.selectedIndex].text);
     currentDeviceID = listOfDevices[listOfDevices.selectedIndex].text;
-    chartData.labels = device.timeData;
-    chartData.datasets[0].data = device.temperatureData;
-    chartData.datasets[1].data = device.humidityData;
-    myLineChart.update();
+    chartData[0].labels = device.timeData;
+    chartData[0].datasets[0].data = device.temperatureData;
+    chartData[1].labels = device.timeData;
+    chartData[1].datasets[0].data = device.humidityData;
+    chartData[2].labels = device.timeData;
+    chartData[2].datasets[0].data = device.lightData;
+    chartData[3].labels = device.timeData;
+    chartData[3].datasets[0].data = device.groundData;
+    updateCharts();
   }
   listOfDevices.addEventListener('change', OnSelectionChange, false);
 
@@ -179,7 +261,7 @@ $(document).ready(() => {
       console.log(messageData);
 
       // time and either temperature or humidity are required
-      if (!messageData.MessageDate || (!messageData.IotData.temperature && !messageData.IotData.humidity)) {
+      if (!messageData.MessageDate || (!messageData.IotData.temperature && !messageData.IotData.humidity && !messageData.IotData.light && !messageData.IotData.ground)) {
         return;
       }
 
@@ -187,13 +269,13 @@ $(document).ready(() => {
       const existingDeviceData = trackedDevices.findDevice(messageData.DeviceId);
 
       if (existingDeviceData) {
-        existingDeviceData.addData(messageData.MessageDate, messageData.IotData.temperature, messageData.IotData.humidity);
+        existingDeviceData.addData(messageData.MessageDate, messageData.IotData.temperature, messageData.IotData.humidity, messageData.IotData.light, messageData.IotData.ground);
       } else {
         const newDeviceData = new DeviceData(messageData.DeviceId);
         trackedDevices.devices.push(newDeviceData);
         const numDevices = trackedDevices.getDevicesCount();
         deviceCount.innerText = numDevices === 1 ? `${numDevices} device` : `${numDevices} devices`;
-        newDeviceData.addData(messageData.MessageDate, messageData.IotData.temperature, messageData.IotData.humidity);
+        newDeviceData.addData(messageData.MessageDate, messageData.IotData.temperature, messageData.IotData.humidity, messageData.IotData.light, messageData.IotData.ground);
 
         // add device to the UI list
         const node = document.createElement('option');
@@ -209,7 +291,7 @@ $(document).ready(() => {
         }
       }
 
-      myLineChart.update();
+      updateCharts();
     } catch (err) {
       console.error(err);
     }
