@@ -1,10 +1,48 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
+
 $(document).ready(() => {
   // if deployed to a site supporting SSL, use wss://
   const protocol = document.location.protocol.startsWith('https') ? 'wss://' : 'ws://';
   const webSocket = new WebSocket(protocol + location.host);
+
+  //DATE FUNCTIONS
+  var startDateValue = new Date().toISOString().slice(0,10)
+  var endDateValue = new Date().toISOString().slice(0,10)
+
+  const startDate =  document.getElementById("startDate");
+  startDate.addEventListener("input", function(){
+    startDateValue = startDate.value;
+  })
+  const endDate = document.getElementById("endDate");
+  endDate.addEventListener("input", function(){
+    endDateValue = endDate.value;
+  })
+  const dateApplyButton = document.getElementById("dateApplyButton");
+  dateApplyButton.addEventListener("click", function(){
+    console.log("Start date: " + startDateValue);
+    console.log("End date: " + endDateValue);
+    console.log("Sending...");
+  })
+  const actualDateCheckbox = document.getElementById("actualDateCheckbox");
+  actualDateCheckbox.checked = true;
+  actualDateCheckbox.addEventListener("change", function(){
+    console.log("Actual Date Checkbox Status = " + actualDateCheckbox.checked);
+  })
+
+  //Slider functions
+  var sliderValue = 50;
+  document.getElementById("textSliderVal").textContent = sliderValue;
+  var mySlider = new Slider("input.slider", {formatter: function (value) {
+    return "Light power: " + value + '%';
+  }
+  });
+  mySlider.on("slide", function(value){
+    sliderValue = value;
+    document.getElementById("textSliderVal").textContent = sliderValue;
+  })
+
 
   // A class for holding the last N points of telemetry for a device
   class DeviceData {
@@ -34,13 +72,12 @@ $(document).ready(() => {
       }
     }
   }
-
   // All the devices in the list (those that have been sending telemetry)
   class TrackedDevices {
     constructor() {
       this.devices = [];
     }
-
+    
     // Find a device based on its Id
     findDevice(deviceId) {
       for (let i = 0; i < this.devices.length; ++i) {
@@ -215,8 +252,7 @@ $(document).ready(() => {
 
   var currentDeviceID = '';
 
-  const lightOnButton = document.getElementById('lightOnButton');
-  const lightOffButton = document.getElementById('lightOffButton');
+  const lightPowerButton = document.getElementById('lightPowerButton');
   const pumpOnButton = document.getElementById('pumpOnButton');
   const pumpOffButton = document.getElementById('pumpOffButton');
 
@@ -234,6 +270,18 @@ $(document).ready(() => {
     });
   }
   
+  lightPowerButton.addEventListener("click", function() {
+    postMessage('{lightOn');
+  });
+
+  pumpOnButton.addEventListener("click", function() {
+    postMessage('pumpOn');
+  });
+
+  pumpOffButton.addEventListener("click", function() {
+    postMessage('pumpOff');
+  });
+
   function OnSelectionChange() {
     const device = trackedDevices.findDevice(listOfDevices[listOfDevices.selectedIndex].text);
     currentDeviceID = listOfDevices[listOfDevices.selectedIndex].text;
