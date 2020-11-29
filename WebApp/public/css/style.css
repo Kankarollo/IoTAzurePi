@@ -44,3 +44,8 @@ select::-ms-expand {
 select:disabled::-ms-expand {
   background: #f60;
 }
+
+#chartContainer{
+  width: 80%;
+  float: left;
+}

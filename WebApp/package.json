@@ -14,6 +14,7 @@
     "azure-iot-common": "^1.12.6",
     "azure-iot-device": "^1.17.2",
     "azure-iothub": "^1.13.0",
+    "bootstrap": "^4.5.3",
     "buffer": "^5.5.0",
     "crypto": "^1.0.1",
     "eslint": "^6.8.0",
