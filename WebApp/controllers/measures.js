@@ -1,8 +1,12 @@
 const iotData = require("../models/iotDataModel");
 
-exports.get_measures = function (req, res) {
+exports.post_get_measures = function (req, res) {
+    bodyFilter = {};
+    if (req.body.deviceId != '') {
+        bodyFilter = { DeviceId: req.body.deviceId };
+    }
     (async () => {
-        let measures = await iotData.find({}).exec();
+        let measures = await iotData.find(bodyFilter).exec();
         res.json(measures);
     })().catch();
 };
