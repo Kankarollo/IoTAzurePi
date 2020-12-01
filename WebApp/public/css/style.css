@@ -49,3 +49,9 @@ select:disabled::-ms-expand {
   width: 80%;
   float: left;
 }
+
+.form-group {
+  height: 200px;
+  float: right;
+  width: 225px;
+}
