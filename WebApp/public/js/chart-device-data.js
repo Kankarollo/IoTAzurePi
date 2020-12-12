@@ -244,7 +244,7 @@ $(document).ready(() => {
       console.log(error);
     });
   }
-  
+
   lightPowerButton.addEventListener("click", function() {
     postMessage('{lightOn');
   });
@@ -312,6 +312,13 @@ $(document).ready(() => {
           listOfDevices.selectedIndex = 0;
           OnSelectionChange();
         }
+      }
+
+      if (messageData.IotData.temperature > 50.0) {
+        $('#alert').show(); 
+      }
+      else { 
+        $('#alert').hide(); 
       }
 
       updateCharts();

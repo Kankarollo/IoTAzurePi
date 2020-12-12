@@ -9,3 +9,7 @@
 #ex1Slider .slider-selection {
 	background: #f5e505;
 }
+
+.alert {
+    display: none;
+}
