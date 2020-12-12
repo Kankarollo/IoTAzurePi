@@ -7,6 +7,8 @@ $(document).ready(() => {
   const protocol = document.location.protocol.startsWith('https') ? 'wss://' : 'ws://';
   const webSocket = new WebSocket(protocol + location.host);
 
+  $('#navAnalyzer').attr("href", "/analytics") 
+
   //Slider functions
   var sliderValue = 50;
   document.getElementById("textSliderVal").textContent = sliderValue;
