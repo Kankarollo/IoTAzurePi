@@ -7,30 +7,6 @@ $(document).ready(() => {
   const protocol = document.location.protocol.startsWith('https') ? 'wss://' : 'ws://';
   const webSocket = new WebSocket(protocol + location.host);
 
-  //DATE FUNCTIONS
-  var startDateValue = new Date().toISOString().slice(0,10)
-  var endDateValue = new Date().toISOString().slice(0,10)
-
-  const startDate =  document.getElementById("startDate");
-  startDate.addEventListener("input", function(){
-    startDateValue = startDate.value;
-  })
-  const endDate = document.getElementById("endDate");
-  endDate.addEventListener("input", function(){
-    endDateValue = endDate.value;
-  })
-  const dateApplyButton = document.getElementById("dateApplyButton");
-  dateApplyButton.addEventListener("click", function(){
-    console.log("Start date: " + startDateValue);
-    console.log("End date: " + endDateValue);
-    console.log("Sending...");
-  })
-  const actualDateCheckbox = document.getElementById("actualDateCheckbox");
-  actualDateCheckbox.checked = true;
-  actualDateCheckbox.addEventListener("change", function(){
-    console.log("Actual Date Checkbox Status = " + actualDateCheckbox.checked);
-  })
-
   //Slider functions
   var sliderValue = 50;
   document.getElementById("textSliderVal").textContent = sliderValue;
@@ -42,7 +18,6 @@ $(document).ready(() => {
     sliderValue = value;
     document.getElementById("textSliderVal").textContent = sliderValue;
   })
-
 
   // A class for holding the last N points of telemetry for a device
   class DeviceData {
