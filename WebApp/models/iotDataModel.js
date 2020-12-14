@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const config = require("../utils/config").mongo;
 
-let measureSchema = {
+const measureSchema = {
     MessageDate: Date,
     DeviceId: String,
     IotData: {
@@ -12,4 +12,9 @@ let measureSchema = {
     },
 };
 
-module.exports = mongoose.model(config.db_collection, measureSchema);
+const dataModel = mongoose.model(config.db_collection, measureSchema);
+
+module.exports = {
+    dataModel,
+    measureSchema
+}

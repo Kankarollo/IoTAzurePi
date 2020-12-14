@@ -7,7 +7,7 @@ var config = {
         port: '3000'
     },
     requester: {
-        timeout: 1000,
+        timeout: 60000,
         message: 'readData'
     }
 };
