@@ -42,7 +42,6 @@ function getRandomRgb() {
 
 $(document).ready(() => {
 
-    const button = document.getElementById('filterButton');
     
     trackedDevices = []
     const selectedDevices = []
@@ -85,7 +84,7 @@ $(document).ready(() => {
             $("#measurementSelectBox").append(`<option>${stripedMeasure}</option>`);
         });
     });
-    
+    const button = document.getElementById('filterButton');
     button.addEventListener('click', function (e) {
         const deviceIdInput = selectedDevices;
         const startDateInput = document.getElementById("startDate").value;

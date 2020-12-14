@@ -27,6 +27,9 @@ if (mongoDBConnectionString) {
         console.log("MongoDB database connection established successfully");
     });
 }
+else{
+    console.warn("[WARNING] mongoDB connection string is NOT defined!");
+}
 
 module.exports = {
     iotHubConnectionString,

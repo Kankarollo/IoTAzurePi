@@ -1,8 +1,7 @@
-# IoTAzurePi
+IoTAzurePi - 2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy
+=======================
 
-Check full documentation - [https://kankarollo.github.io/IoTAzurePi/](https://kankarollo.github.io/IoTAzurePi/)
-
-## 2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy 
+## [Opis projektu](#opis-projektu)
 
 Celem projektu jest opracowanie rozproszonego systemu monitorowania,
 zrealizowanego korzystając z chmury (AWS, Azure), oraz koncepcji
@@ -17,12 +16,17 @@ konfiguracyjnych) z panelu administracyjnego w chmurze do urządzeń
 pomiarowych. Dodatkowo panel administracyjny powinien umożliwiać
 przeprowadzenia analiz na danych pomiarowych.
 
-## Idea na zastosowanie ##
+----------------
+## [Zastosowanie projektu - IoT ogród](#zastosowanie-projektu---iot-ogród)
+
+
 [Inspiracja.](https://www.hackster.io/105122/smart-plant-iot-59cbc3) 
 
-IoT ogród. Poprzez aplikację Azure WebApp użytkownik mógłby zarządzać swoimi roślinami oraz obserwować dane wysyłane z czujników (temperatura, wilgotność pomieszczenia, wilgotność gleby, natężenie światła) za pomocą prostego GUI. Znajdowałyby się tam odpowiednie funkcję:
+
+Poprzez aplikację WebAppGUI użytkownik mógłby zarządzać swoimi roślinami oraz obserwować dane wysyłane z czujników (temperatura, wilgotność pomieszczenia, wilgotność gleby, natężenie światła) za pomocą prostego GUI. Znajdowałyby się tam odpowiednie funkcję:
+
 - Wizualizacja danych otrzymanych z czujników
-- Możliwość podlania rośliny za pomocą wysłania wiadomości sterującej do raspberryPi, która uruchomi pompkę z wodą
+- Możliwość sterowania parametrami takimi jak wilgotność gleby czy natężenie światła za pomocą pompki z wodą oraz żarówką, które są sterowane poprzez RaspberryPi.
 - Przechowywanie danych w bazie danych CosmoDB
 
-![Schemat projektu](docs/media/Schemat.png)
+<img src="media/Schemat.png" alt="drawing" width="600" height="800"/>
