@@ -21,3 +21,7 @@ async function requestData(deviceID) {
     );
     devices.forEach(requestData);
 })().catch();
+
+module.exports = {
+    devices
+}

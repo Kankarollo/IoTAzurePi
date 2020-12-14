@@ -12,11 +12,10 @@ async function getCollectedData(filterBody) {
     return response.json();
 }
 
-function prepareFilterBody(deviceID, startDate, endDate) {
+function prepareFilterBody(devicesArray, startDate, endDate) {
     var filterBody = {};
-    if (deviceID != '') {
-        var allDevicesID = deviceID.split(",");
-        filterBody['DeviceId'] = allDevicesID;
+    if (!devicesArray) {
+        filterBody['DeviceId'] = devicesArray;
     }
     if (startDate != '') {
         var tmp = new Date(startDate).toISOString();
@@ -42,14 +41,56 @@ function getRandomRgb() {
 }
 
 $(document).ready(() => {
-    const button = document.getElementById('filterButton');
 
+    const button = document.getElementById('filterButton');
+    
+    trackedDevices = []
+    const selectedDevices = []
+    
+    $.getJSON("/analytics/devices", function (data, textStatus, jqXHR) {
+        JSON.parse(data).forEach((element) => {
+            trackedDevices.push(element);
+        });
+    }).done(() => {
+        trackedDevices.forEach(deviceID => {
+            let stripedDeviceID = deviceID.toString().replace(/(<([^>]+)>)/gi, "");
+            $("#listOfDevices").append(`
+            <div>
+                <input type="checkbox" id="checkDevice" name="${stripedDeviceID}" class="form-check-input"/>
+                <label for="check${stripedDeviceID}" id="check${stripedDeviceID}Label" class="form-check-label">${stripedDeviceID}</label>
+            </div>`);    
+            
+        });
+        $('input:checkbox').on('click',function() {
+            let deviceName = $(this).attr("name");
+            if (this.checked) {
+                selectedDevices.push(deviceName)
+            }
+            else {
+                var index = selectedDevices.indexOf(deviceName);
+                selectedDevices.splice(index)
+            }
+        });
+    });
+    
+
+    const measurementsModel = []
+    $.getJSON("/measures/model", function (data, textStatus, jqXHR) {
+        data.forEach((element) => {
+            measurementsModel.push(element);
+        });
+    }).done(() => {
+        measurementsModel.forEach(measure => {
+            let stripedMeasure = measure.toString().replace(/(<([^>]+)>)/gi, "");
+            $("#measurementSelectBox").append(`<option>${stripedMeasure}</option>`);
+        });
+    });
+    
     button.addEventListener('click', function (e) {
-        const deviceIdInput = document.getElementById('deviceName').value;
+        const deviceIdInput = selectedDevices;
         const startDateInput = document.getElementById("startDate").value;
         const endDateInput = document.getElementById("endDate").value;
-
-        const measurementTypeInput = document.getElementById('measurementType').value;
+        const measurementTypeInput = document.getElementById('measurementSelectBox').value;
 
         var ctx = document.getElementById('analyticsChart').getContext('2d');
 
