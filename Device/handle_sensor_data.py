@@ -7,7 +7,7 @@ import logging
 
 
 def generate_data():
-    return {"temperature": random.random(), "humidity": random.random(), "temperatureAlert": "false"}
+    return {"temperature": random.random(), "humidity": random.random(), "light":random.random(), "ground":random.random()}
 
 def read_data():
     humidity, temperature = read_data_DHT11()
