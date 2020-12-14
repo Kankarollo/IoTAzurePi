@@ -1,8 +1,9 @@
-const iotData = require("../models/iotDataModel");
+const iotData = require("../models/iotDataModel").dataModel;
+const iotDataSchema = require("../models/iotDataModel").measureSchema;
 
 exports.get_measurements_model = function (req, res) {
     var measurementsModel = []
-    data = iotData.measureSchema.IotData;
+    data = iotDataSchema.IotData;
     for(var attribute in data){
         measurementsModel.push(attribute);
     }
@@ -11,7 +12,7 @@ exports.get_measurements_model = function (req, res) {
 
 exports.post_get_measures = function (req, res) {
     (async () => {
-        let measures = await iotData.dataModel.find(req.body).exec();
+        let measures = await iotData.find(req.body).exec();
         res.json(measures);
     })().catch();
 };

@@ -23,4 +23,4 @@ IoT ogród. Poprzez aplikację Azure WebApp użytkownik mógłby zarządzać swo
 - Możliwość podlania rośliny za pomocą wysłania wiadomości sterującej do raspberryPi, która uruchomi pompkę z wodą
 - Przechowywanie danych w bazie danych CosmoDB
 
-![Schemat projektu](doc/media/Schemat.png)
+![Schemat projektu](docs/media/Schemat.png)
