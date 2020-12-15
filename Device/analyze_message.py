@@ -6,6 +6,7 @@ import logging
 from rpi_hardware_interface import setPWM
 
 
+
 async def analyze_msg(data):
     command, command_value = parse_message(data)
     if(command == "lightPWM"):
@@ -29,6 +30,10 @@ def parse_message(message):
     if(len(message) == 2):
         command, command_value = message[0], message[1]
     else:
+<<<<<<< HEAD
         command = message[0]
     print(f"command = {command}")
     return command, command_value
+=======
+        logging.info("-I- Received unknow msg")
+>>>>>>> 7d6c5fa4b2ecf49593f218c61ca0551eb3fc4c13
