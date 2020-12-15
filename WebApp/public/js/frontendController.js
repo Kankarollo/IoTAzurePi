@@ -246,16 +246,15 @@ $(document).ready(() => {
   }
 
   lightPowerButton.addEventListener("click", function() {
-    postMessage('{lightOn');
+    var message = 'lightPWM:' + sliderValue;
+    postMessage(message);
   });
 
   pumpOnButton.addEventListener("click", function() {
     postMessage('pumpOn');
   });
 
-  pumpOffButton.addEventListener("click", function() {
-    postMessage('pumpOff');
-  });
+
 
   function OnSelectionChange() {
     const device = trackedDevices.findDevice(listOfDevices[listOfDevices.selectedIndex].text);
