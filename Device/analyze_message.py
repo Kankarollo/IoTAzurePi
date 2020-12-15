@@ -30,10 +30,6 @@ def parse_message(message):
     if(len(message) == 2):
         command, command_value = message[0], message[1]
     else:
-<<<<<<< HEAD
         command = message[0]
     print(f"command = {command}")
     return command, command_value
-=======
-        logging.info("-I- Received unknow msg")
->>>>>>> 7d6c5fa4b2ecf49593f218c61ca0551eb3fc4c13
