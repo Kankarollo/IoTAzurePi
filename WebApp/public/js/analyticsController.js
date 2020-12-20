@@ -13,6 +13,7 @@ async function getCollectedData(filterBody) {
 }
 
 function prepareFilterBody(devicesArray, startDate, endDate) {
+    console.log(`devicesArray=${devicesArray},startDate=${startDate},endDate=${endDate},`)
     var filterBody = {};
     if (!devicesArray) {
         filterBody['DeviceId'] = devicesArray;
@@ -42,7 +43,6 @@ function getRandomRgb() {
 
 $(document).ready(() => {
 
-    
     trackedDevices = []
     const selectedDevices = []
     
@@ -64,10 +64,12 @@ $(document).ready(() => {
             let deviceName = $(this).attr("name");
             if (this.checked) {
                 selectedDevices.push(deviceName)
+                console.log(selectedDevices)
             }
             else {
                 var index = selectedDevices.indexOf(deviceName);
                 selectedDevices.splice(index)
+                console.log(selectedDevices)
             }
         });
     });
@@ -97,7 +99,11 @@ $(document).ready(() => {
         var chartData = {};
 
         const filterBody = prepareFilterBody(deviceIdInput, startDateInput, endDateInput);
-
+        if($.isEmptyObject(filterBody))
+        {
+            console.log("Objekt pusty!!!");
+            return;
+        }
         getCollectedData(filterBody).then(measures => {
             measures.forEach(element => {
                 if (!chartData[element.DeviceId]) {
