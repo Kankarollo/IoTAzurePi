@@ -15,9 +15,6 @@ router.get('/', indexController.get_index);
 // GET analytics page
 router.get('/analytics', analyticsController.get_analytics);
 
-// GET list of devices
-router.get('/analytics/devices', analyticsController.get_devices);
-
 // GET version
 router.get('/version', versionController.get_version);
 
@@ -27,7 +24,10 @@ router.post('/measures', measuresController.post_get_measures);
 // GET measurements model
 router.get('/measures/model', measuresController.get_measurements_model);
 
-// POST device/deviceID
+// GET list of devices from database
+router.get('/device', deviceController.get_devices);
+
+// POST send message to device
 router.post('/device/:deviceId', deviceController.post_device_id);
 
 module.exports = router;
