@@ -17,8 +17,6 @@ async def analyze_msg(data):
         GPIO.output(22, GPIO.HIGH)
         time.sleep(3)
         GPIO.output(22, GPIO.LOW)
-    elif(command == "pumpOff"):
-        GPIO.output(22, GPIO.LOW)
     elif(command == "readData"):
         await send_single_message(read_data())
         # await send_single_message(generate_data())

@@ -229,7 +229,6 @@ $(document).ready(() => {
 
   const lightPowerButton = document.getElementById('lightPowerButton');
   const pumpOnButton = document.getElementById('pumpOnButton');
-  const pumpOffButton = document.getElementById('pumpOffButton');
 
   function postMessage(message) {
     fetch('/device/' + currentDeviceID, {method: 'POST', body: JSON.stringify({message: message}), headers: { "Content-Type": "application/json" }})
@@ -253,8 +252,6 @@ $(document).ready(() => {
   pumpOnButton.addEventListener("click", function() {
     postMessage('pumpOn');
   });
-
-
 
   function OnSelectionChange() {
     const device = trackedDevices.findDevice(listOfDevices[listOfDevices.selectedIndex].text);
