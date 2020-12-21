@@ -4,7 +4,7 @@ const iotDataSchema = require("../models/iotDataModel").measureSchema;
 exports.get_measurements_model = function (req, res) {
     var measurementsModel = []
     data = iotDataSchema.IotData;
-    for(var attribute in data){
+    for (var attribute in data) {
         measurementsModel.push(attribute);
     }
     res.json(measurementsModel);

@@ -1,6 +1,26 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
+async function getListOfDevices() {
+    const response = await fetch('/device', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.json();
+}
+
+async function getListOfMeasurementTypes() {
+    const response = await fetch('/measures/model', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.json();
+}
+
 async function getCollectedData(filterBody) {
     const response = await fetch('/measures', {
         method: 'POST',
@@ -15,7 +35,7 @@ async function getCollectedData(filterBody) {
 function prepareFilterBody(devicesArray, startDate, endDate) {
     console.log(`devicesArray=${devicesArray},startDate=${startDate},endDate=${endDate},`)
     var filterBody = {};
-    if (!devicesArray) {
+    if (Array.isArray(devicesArray) && devicesArray.length) {
         filterBody['DeviceId'] = devicesArray;
     }
     if (startDate != '') {
@@ -43,67 +63,38 @@ function getRandomRgb() {
 
 $(document).ready(() => {
 
-    trackedDevices = []
-    const selectedDevices = []
-    
-    $.getJSON("/analytics/devices", function (data, textStatus, jqXHR) {
-        JSON.parse(data).forEach((element) => {
-            trackedDevices.push(element);
-        });
-    }).done(() => {
-        trackedDevices.forEach(deviceID => {
-            let stripedDeviceID = deviceID.toString().replace(/(<([^>]+)>)/gi, "");
-            $("#listOfDevices").append(`
-            <div>
-                <input type="checkbox" id="checkDevice" name="${stripedDeviceID}" class="form-check-input"/>
-                <label for="check${stripedDeviceID}" id="check${stripedDeviceID}Label" class="form-check-label">${stripedDeviceID}</label>
-            </div>`);    
-            
-        });
-        $('input:checkbox').on('click',function() {
-            let deviceName = $(this).attr("name");
-            if (this.checked) {
-                selectedDevices.push(deviceName)
-                console.log(selectedDevices)
-            }
-            else {
-                var index = selectedDevices.indexOf(deviceName);
-                selectedDevices.splice(index)
-                console.log(selectedDevices)
-            }
-        });
-    });
-    
+    var ctx = document.getElementById('analyticsChart').getContext('2d');
 
-    const measurementsModel = []
-    $.getJSON("/measures/model", function (data, textStatus, jqXHR) {
-        data.forEach((element) => {
-            measurementsModel.push(element);
-        });
-    }).done(() => {
-        measurementsModel.forEach(measure => {
-            let stripedMeasure = measure.toString().replace(/(<([^>]+)>)/gi, "");
-            $("#measurementSelectBox").append(`<option>${stripedMeasure}</option>`);
+    getListOfDevices().then(devices => {
+        devices.forEach(element => {
+            $("#deviceSelectBox").append(`<option>${element}</option>`);
         });
     });
-    const button = document.getElementById('filterButton');
-    button.addEventListener('click', function (e) {
-        const deviceIdInput = selectedDevices;
+
+    getListOfMeasurementTypes().then(measurements => {
+        measurements.forEach(element => {
+            $("#measurementSelectBox").append(`<option>${element}</option>`);
+        });
+    });
+
+    const filterButton = document.getElementById('filterButton');
+
+    filterButton.addEventListener('click', function (e) {
+        if (window.chart && window.chart !== null) {
+            window.chart.destroy();
+        }
+
+        const selectedDevices = document.querySelectorAll('#deviceSelectBox option:checked');
+
+        const deviceIdInput = Array.from(selectedDevices).map(el => el.value);
         const startDateInput = document.getElementById("startDate").value;
         const endDateInput = document.getElementById("endDate").value;
         const measurementTypeInput = document.getElementById('measurementSelectBox').value;
-
-        var ctx = document.getElementById('analyticsChart').getContext('2d');
 
         var labels = [];
         var chartData = {};
 
         const filterBody = prepareFilterBody(deviceIdInput, startDateInput, endDateInput);
-        if($.isEmptyObject(filterBody))
-        {
-            console.log("Objekt pusty!!!");
-            return;
-        }
         getCollectedData(filterBody).then(measures => {
             measures.forEach(element => {
                 if (!chartData[element.DeviceId]) {
@@ -119,17 +110,16 @@ $(document).ready(() => {
                 }
                 labels.push(element.MessageDate);
             });
-            console.log(chartData);
-            console.log(Object.keys(chartData));
+
             var devices = Object.keys(chartData);
-            var chart = new Chart(ctx, {
+
+            window.chart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels
                 }
             });
 
-            console.log(chartData["SimulatorDevice"]);
             devices.forEach(device => {
                 const color = getRandomRgb();
                 chart.data.datasets.push({
@@ -142,7 +132,5 @@ $(document).ready(() => {
                 chart.update();
             });
         });
-
     });
-
 });
