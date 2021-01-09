@@ -47,8 +47,13 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Wprowadzenie</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Wprowadzenie</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../opis_projektu/">Opis projektu</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../instalacja_uruchomienie/">Instalacja</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../obsluga_projektu/">Obsługa</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">WebApp</span></p>
@@ -60,17 +65,13 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Urządzenie IoT</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../opis_czujnikow/">Czujniki'</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../opis_czujnikow/">Czujniki</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Azure</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">IoT Hub</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#iot-hub">IoT Hub</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#stworzenie-srodowiska">Stworzenie środowiska</a>
-    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../analizaDanych/">Analiza danych</a>
@@ -124,8 +125,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="srodowisko-iot-hub">Środowisko IoT Hub</h1>
-<h3 id="iot-hub">IoT Hub</h3>
+                <h2 id="iot-hub">IoT Hub</h2>
 <p>Iot Hub jest to serwis zarządzania, znajdujący się w chmurze Azure. Do jego zadań należy jest spełnianie funkcji centralnego panelu zarządzania komunikacją dwustronną pomiędzy urządzeniami IoT a aplikacjami je wykorzystującymi. Azure IoT pozwala nam na zapewnienie stabilnej i bezpiecznej komunikację pomiędzy milionami urządzeń IoT i rozwiązaniami backendowymi. Do IoT Hub możemy podłączyć każdy rodzaj urządzenia.</p>
 <p>Funkcje IoT Hub: 
 - Skalowanie rozwiązań
@@ -135,7 +135,8 @@
 - Łatwa konfiguracja i kontrola nad urządzeniami.</p>
 <p>Koszty:
 - Dzięki studenckiej wersji próbnej Azure, możemy skorzystać z wersji bezpłatnej IoT Hub do której zalicza się możliwość wysyłania 8000 komunikatów dziennie.</p>
-<h3 id="stworzenie-srodowiska">Stworzenie środowiska</h3>
+<hr />
+<h2 id="stworzenie-srodowiska">Stworzenie środowiska</h2>
 <p>Stworzenie środowiska jest bardzo proste. Opisane jest bardzo dobrze na oficjalnej <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal">stronie Azure'a</a>.</p>
 <p>Nasze rozwiązanie nie jest zależne od konkretnego panelu IoT Hub. Jedyne co jest potrzebne to tzw. CONNECTION STRING, który pozwala na przyłączenie urządzenia do IoT Hub. Z tego powodu każdy z członków zespołu stworzył swój własny panel IoT Hub do własnego użytku.   </p>
               
@@ -148,7 +149,7 @@
         <a href="../analizaDanych/" class="btn btn-neutral float-right" title="Analiza danych">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../opis_czujnikow/" class="btn btn-neutral" title="Czujniki'"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../opis_czujnikow/" class="btn btn-neutral" title="Czujniki"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
