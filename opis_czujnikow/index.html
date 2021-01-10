@@ -1,140 +1,90 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Czujniki - IoTAzurePi</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Czujniki - IoTAzurePi</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Czujniki";
-    var mkdocs_page_input_path = "opis_czujnikow.md";
-    var mkdocs_page_url = null;
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Dokumentacja techniczna cz\u0119\u015bci sprz\u0119towej", url: "#_top", children: [
+              {title: "Czujnik temperatury i wilgotno\u015bci DHT11", url: "#czujnik-temperatury-i-wilgotnosci-dht11" },
+              {title: "Czujnik nat\u0119\u017cenia \u015bwiat\u0142a", url: "#czujnik-natezenia-swiata" },
+              {title: "Czujnik wilgotno\u015bci gleby", url: "#czujnik-wilgotnosci-gleby" },
+              {title: "Pompa do wody", url: "#pompa-do-wody" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
 
-  <div class="wy-grid-for-nav">
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
 
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> IoTAzurePi</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+      
+    
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Wprowadzenie</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../opis_projektu/">Opis projektu</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../instalacja_uruchomienie/">Instalacja</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../obsluga_projektu/">Obsługa</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">WebApp</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../webAppGUI/">Interfejs</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../cosmoDB/">CosmoDB</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Urządzenie IoT</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Czujniki</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#czujnik-temperatury-i-wilgotnosci-dht11">Czujnik temperatury i wilgotności DHT11</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#czujnik-natezenia-swiata">Czujnik natężenia światła</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#czujnik-wilgotnosci-gleby">Czujnik wilgotności gleby</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pompa-do-wody">Pompa do wody</a>
-    </li>
-    </ul>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Azure</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../ioT_hub/">IoT Hub</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../analizaDanych/">Analiza danych</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../komunikacja/">Komunikacja</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Dokumentacja</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../dokumentacja/">Edycja dokumentacji</a>
-                    </li>
-                </ul>
-      </div>
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../ioT_hub/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../ioT_hub/" class="btn btn-xs btn-link">
+        IoT Hub
+      </a>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">IoTAzurePi</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
     
-      
-        
-          <li>Urządzenie IoT &raquo;</li>
-        
-      
+    <div class="wm-article-nav">
+      <a href="../cosmoDB/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../cosmoDB/" class="btn btn-xs btn-link">
+        CosmoDB
+      </a>
+    </div>
     
-    <li>Czujniki</li>
-    <li class="wy-breadcrumbs-aside">
-      
-    </li>
-  </ul>
-  
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="dokumentacja-techniczna-czesci-sprzetowej">Dokumentacja techniczna części sprzętowej</h1>
+  </div>
+
+    
+
+    <h1 id="dokumentacja-techniczna-czesci-sprzetowej">Dokumentacja techniczna części sprzętowej</h1>
 <p>Do zrealizowania części sprzętowej skorzystano z modułów komunikacyjnych wbudowanych w platformę mikroprocesorową Raspberry Pi. Rozpisane piny urządzenia znajdują się na rysunku poniżej:</p>
 <hr />
 <h2 id="czujnik-temperatury-i-wilgotnosci-dht11"><a href="#czujnik-temperatury-i-wilgotności-dht11">Czujnik temperatury i wilgotności DHT11</a></h2>
@@ -201,57 +151,43 @@ Następnie zainstalować bibliotekę dla Pythona 2 i Pythona 3 za pomocą komend
 <p>Do podlewania rośliny w doniczce została wykorzystana pompka do wody działająca na bazie komutatorowego silnika prądu stałego. Pompa zasilana jest napięciem od 2.5 - 6 V. Prąd pobierany przez silnik wynosi 130-220 mA. Wydajność przepływu cieczy to 80-120 L/h. 
 Maksymalny prąd, który może być pobierany z zasilania 5V urządzenia Raspberry Pi to 300 mA, więc z urządzenia bez problemu można zasilić pompę do wody. Do wysterowania silnikiem został użyty mostek H L293D. </p>
 <p><img src="../media/pompka.png" alt="drawing" width="400" height="400"/></p>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+
+  <br>
+    
+
+    
+    
       
-        <a href="../ioT_hub/" class="btn btn-neutral float-right" title="IoT Hub">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../cosmoDB/" class="btn btn-neutral" title="CosmoDB"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../ioT_hub/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../ioT_hub/" class="btn btn-xs btn-link">
+        IoT Hub
+      </a>
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
+    
+    <div class="wm-article-nav">
+      <a href="../cosmoDB/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../cosmoDB/" class="btn btn-xs btn-link">
+        CosmoDB
+      </a>
+    </div>
     
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-      
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../cosmoDB/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../ioT_hub/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+    <br>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
 
 </body>
 </html>
