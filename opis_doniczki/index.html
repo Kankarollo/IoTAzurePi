@@ -215,13 +215,6 @@
     </li>
     
       
-
-
-  <li class="navtree toctree-l1 inactive">
-    <a class="" href="../komunikacja/">Komunikacja</a>
-  </li>
-    
-      
   <li class="navtree toctree-l1 label">
     <p class="caption">Dokumentacja</p>
   </li>
@@ -348,7 +341,8 @@ Następnie zainstalować bibliotekę dla Pythona 2 i Pythona 3 za pomocą komend
 <p>Czujnik podłączony został do napięcia 3.3 V z urządzenia Raspberry Pi, uziemienie do GND oraz dane zostały podłączone do GPIO 2 (SDA) oraz do GPIO 3 (SCL) został podłączony zegar interfejsu I2C.</p>
 <p><img src="../media/BH1750-Module-Setup.png" alt="drawing" width="400" height="400"/></p>
 <p>Do komunikacji z czujnikiem wykorzystano magistralę I2C. Po podłączeniu pinu ADD do uziemienie urządzenie ma adres 0x23. Można ustawić różne tryby odczytu. Wykorzystany został tryb 0x20, jest to tryb umożliwiający odczyt z dokładnością do 1 lx oraz pozwalający na wyłączenie urządzenia po odczycie w celu oszczędzenia energii. Przykładowy kod w języku Python:</p>
-<pre><code>    def convert_GY30_to_Number(data):
+<pre><code>    ```
+    def convert_GY30_to_Number(data):
     # Simple function to convert 2 bytes of data
     # into a decimal number.
     result=(data[1] + (256 * data[0])) / 1.2
@@ -361,6 +355,7 @@ Następnie zainstalować bibliotekę dla Pythona 2 i Pythona 3 za pomocą komend
     # Device is automatically set to Power Down after measurement.
     data = bus.read_i2c_block_data(0x23,0x20)
     return convert_GY30_to_Number(data)
+    ```
 </code></pre>
 <hr />
 <h2 id="czujnik-wilgotnosci-gleby"><a href="#czujnik-wilgotności-gleby">Czujnik wilgotności gleby</a></h2>

@@ -170,7 +170,7 @@
     
       
         <li class="toctree-l3">
-          <a class="toctree-l4" href="#wersja-testowa">Wersja testowa</a>
+          <a class="toctree-l4" href="#stworzenie-nowego-srodowiska">Stworzenie nowego środowiska</a>
         </li>
     
     </ul>
@@ -181,13 +181,6 @@
         
       </ul>
     </li>
-    
-      
-
-
-  <li class="navtree toctree-l1 inactive">
-    <a class="" href="../komunikacja/">Komunikacja</a>
-  </li>
     
       
   <li class="navtree toctree-l1 label">
@@ -252,49 +245,18 @@
                 <h1 id="cosmodb">CosmoDB</h1>
 <h2 id="opis"><a href="#opis">Opis</a></h2>
 <p>W celu zapisania danych do późniejszej analizy, w projekcie zastosowaliśmy usługę Azure Cosmos DB, która używa bazy danych mongoDB.</p>
-<hr />
-<h2 id="wersja-testowa"><a href="#wersja-testowa">Wersja testowa</a></h2>
-<p>W celu testowym został stworzony skrypt napisany w języku python, który wyświetla odebrane z IoT Hub'a dane i przekierowuje je do bazy danych Azure Cosmos DB.</p>
-<p>Wymagane:
- - Wersja python &gt;= 3.6
- - Posiadanie instancji <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal">IoT Hub</a>
- - Posiadanie instancji <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-python">Azure Cosmos DB</a> </p>
-<p>Uruchomienie:</p>
+<p>Funkcje Azure Cosmos DB:</p>
 <ul>
-<li>
-<p>Ściągnąć repozytorium</p>
-<pre><code>git clone https://github.com/Kankarollo/IoTAzurePi.git
-</code></pre>
-</li>
-<li>
-<p>Przenieść się na branch komunikacji dwustronnej</p>
-<pre><code>git checkout origin\managing_storage
-</code></pre>
-</li>
-<li>
-<p>Zainstalować wymagane biblioteki :</p>
-<pre><code>python -m pip -r requirements.txt
-</code></pre>
-</li>
-<li>
-<p>Ustawić zmienne środowiskowe</p>
-</li>
-<li>DEVICE_CONN_STRING - Znajdziemy je w (iot hub/Explorers/IoT devices/nazwa_urządzenia/) i jest to pole Primary Connection String.</li>
-<li>EVENT_HUB_NAME, EVENT_HUB_CONN_STR - Wartości tych zmiennych są w iot hubie (iot hub/settings/built-in endpoints) i są to kolejno Event Hub-compatible endpoint, Event Hub-compatible name.</li>
-<li>
-<p>MONGO_DB_CS - azure comsos DB account/Settings/Connection String/ Pole <strong>Primary Connection String</strong></p>
-<pre><code>export DEVICE_CONN_STRING='device connection string'
-export EVENT_HUB_NAME='event hub name'
-export EVENT_HUB_CONN_STR='event hub connection string'
-export MONGO_DB_CS='device connection string'
-</code></pre>
-</li>
-<li>
-<p>Uruchom program main.py</p>
-<pre><code>python main.py
-</code></pre>
-</li>
+<li>Gwarantowana szybkość na jakąkolwiek skalę</li>
+<li>Uproszczony rozwój aplikacji</li>
+<li>Ciągłość i bezawaryjność </li>
+<li>W pełni zarządzalny i opłacalny</li>
 </ul>
+<p><strong>Koszty:</strong></p>
+<p>Aplikacja Azure Cosmos DB w swojej darmowej odsłonie pozwala na użycie 400 RU/s oraz 5 GB magazynu. </p>
+<h2 id="stworzenie-nowego-srodowiska"><a href="#stworzenie-nowego-środowiska">Stworzenie nowego środowiska</a></h2>
+<p>Do obsługi naszej aplikacji należy wyłącznie stworzyć nowe środowisko w panelu Azure Cosmos DB. Panel jest bardzo przejrzysty i jedyne na co musimy uważać to jaką subskrypcję wybieramy. </p>
+<p>Po utworzeniu panelu, skopiuj ze strony MongoDBConnectionString i zdefiniuj tak jak jest to opisane w rozdziale "Od czego zacząć?" dokumentacji.</p>
               
             </div>
           </div>
@@ -302,7 +264,7 @@ export MONGO_DB_CS='device connection string'
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../komunikacja/" class="btn btn-neutral float-right" title="Komunikacja">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../dokumentacja/" class="btn btn-neutral float-right" title="Edycja dokumentacji">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../ioT_hub/" class="btn btn-neutral" title="IoT Hub"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -336,7 +298,7 @@ export MONGO_DB_CS='device connection string'
         <span><a href="../ioT_hub/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../komunikacja/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../dokumentacja/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
