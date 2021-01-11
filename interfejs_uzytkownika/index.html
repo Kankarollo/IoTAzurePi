@@ -124,16 +124,6 @@
           <a class="toctree-l4" href="#schemat-aplikacji">Schemat aplikacji</a>
         </li>
     
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#opis-kodu-projektu">Opis kodu projektu</a>
-        </li>
-    
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#status-obecny">Status obecny</a>
-        </li>
-    
     </ul>
   </li>
 
@@ -268,67 +258,20 @@
               
                 <h1 id="interfejs-uzytkownika">Interfejs użytkownika</h1>
 <h2 id="opis"><a href="#opis">Opis</a></h2>
-<p>WebAppGUI jest to aplikacja webowa przeznaczona dla użytkownika w celu zarządzania całym środowiskiem. Użytkownik może, za jej pomocą, wizualizować otrzymane dane, oraz sterować parametrami takimi jak wilgotność gleby oraz natężenie światła. Aplikacja może być uruchomiona lokalnie - użytkownik będzie musiał być w tej samej sieci by móc się nią posługiwać, lub uruchomiona na środowisku <em>Azure App Service</em>, przez co użytkownik będzie miał dostęp do aplikacji z każdego miejsca gdzie będzie miał dostęp do internetu.</p>
+<p>Panel administracyjny został wykonany w postaci aplikacji webowej  przeznaczonej dla użytkownika w celu zarządzania całym środowiskiem. Użytkownik może, za jej pomocą, wizualizować otrzymane dane, oraz sterować parametrami takimi jak wilgotność gleby oraz natężenie światła. Aplikacja może być uruchomiona lokalnie - użytkownik będzie musiał być w tej samej sieci by móc się nią posługiwać, lub uruchomiona na środowisku <em>Azure App Service</em>, przez co użytkownik będzie miał dostęp do aplikacji z każdego miejsca gdzie będzie miał dostęp do internetu.</p>
 <hr />
 <h2 id="schemat-aplikacji"><a href="#schemat-aplikacji">Schemat aplikacji</a></h2>
-<p>Strona główna aplikacji.</p>
+<p>Panel składa się z dwóch stron:</p>
+<p>Panelu głównego z którego:</p>
+<ul>
+<li>Możemy obserwować aktualne dane.</li>
+<li>Podlać roślinę za pomocą naciśnięcie przycisku Pump!</li>
+<li>Ustawić natężenie światła lampki nad rośliną.</li>
+</ul>
+<p>Te funkcję możemy wykonywać do każdego przyłączonego urządzenia IoT. Wystarczy wybrać go z paska znajdującego się w lewym górnym rogu ekranu.</p>
 <p><img src="../media/interfejs_home.PNG" alt="drawing" width="600" height="600"/></p>
 <p>Strona analityczna aplikacji</p>
 <p><img src="../media/interfejs_analytics.PNG" alt="drawing" width="600" height="600"/></p>
-<hr />
-<h2 id="opis-kodu-projektu"><a href="#opis-kodu-projektu">Opis kodu projektu</a></h2>
-<p>Kod projektu jest dostępny w branchu <a href="https://github.com/Kankarollo/IoTAzurePi/tree/app_develop"><em>app_develop</em></a>.</p>
-<p>TODO</p>
-<hr />
-<h2 id="status-obecny"><a href="#status-obecny">Status obecny</a></h2>
-<p>Na chwilę obecną udało się stworzyć podstawową wersję prezentacyjną. Pozwala ona na stworzenie wykresu na podstawie otrzymanych danych z Iot Hub'a. W celach testowych aplikacja obsługuje 2 podstawowe typy otrzymanych danych (Temperatura i wilgotność). Wynik jest widoczny na poniższym obrazku. </p>
-<p><img src="../media/WebAppGUI-Demo.png" alt="drawing" width="600" height="600"/></p>
-<p>Prace są wykonywane na branchu <a href="https://github.com/Kankarollo/IoTAzurePi/tree/app_develop">app_develop</a>.</p>
-<p>Wymagane:
- - Wersja python &gt;= 3.6
- - Posiadanie instancji <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal">IoT Hub</a>
- - Posiadanie instancji <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-python">Azure Cosmos DB</a> </p>
-<p>Uruchomienie:</p>
-<ul>
-<li>
-<p>Ściągnąć repozytorium</p>
-<pre><code>git clone https://github.com/Kankarollo/IoTAzurePi.git
-</code></pre>
-</li>
-<li>
-<p>Przenieść się na branch komunikacji dwustronnej</p>
-<pre><code>git checkout origin\app_develop
-</code></pre>
-</li>
-<li>
-<p>Zainstalować wymagane biblioteki :</p>
-<pre><code>python -m pip -r requirements.txt
-</code></pre>
-</li>
-<li>
-<p>Ustawić zmienne środowiskowe</p>
-</li>
-<li>IotHubConnectionString - Znajdziemy je w iot hub/Shared access policies/service pole Connection string-primary key.</li>
-<li>EventHubConsumerGroup - W iot hub/settings/built-in endpoints nazwa Consumer Groups. Domyślnie - "$Default".</li>
-<li>
-<p>mongoDBConnectionString - azure comsos DB account/Settings/Connection String/ Pole <strong>Primary Connection String</strong></p>
-<p><strong>Linux</strong></p>
-<pre><code>export IotHubConnectionString='device connection string'
-export EventHubConsumerGroup='event '
-export mongoDBConnectionString='device connection string'
-</code></pre>
-<p><strong>Windows (cmd)</strong></p>
-<pre><code>set IotHubConnectionString='device connection string'
-set EventHubConsumerGroup='event '
-set mongoDBConnectionString='device connection string'
-</code></pre>
-</li>
-<li>
-<p>Uruchom program main.py</p>
-<pre><code>python main.py
-</code></pre>
-</li>
-</ul>
               
             </div>
           </div>
