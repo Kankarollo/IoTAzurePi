@@ -371,6 +371,23 @@
 <pre><code>  python3 main.py
 </code></pre>
 <h2 id="symulacja-urzadzenia"><a href="#symulacja-urządzenia">Symulacja urządzenia</a></h2>
+<p>W przypadku braku wcześniej przygotowanego urządzenia IoT, uruchom program symulacyjny, który będzie wysyłał losowe dane do panelu administracyjnego.</p>
+<p>Tak samo jak prawdziwe urządzenie należy je wcześniej zadeklarować w Azure IoT Hub.</p>
+<p>Pobierz repozytorium za pomocą narzędzia git:</p>
+<pre><code>    git clone https://github.com/Kankarollo/IoTAzurePi.git
+</code></pre>
+<p>Przejdź na branch mock_device</p>
+<pre><code>    git checkout mock_device
+</code></pre>
+<p>Przejdź do folderu Device:</p>
+<pre><code>    cd Device
+</code></pre>
+<p>Przed instalacją należy zainstalować wszystkie potrzebne biblioteki do prawidłowego działania systemu. Wejdź do folderu Device i uruchom instalację z pomocą komendy:</p>
+<pre><code>  python3 -m pip install -r requirements.txt
+</code></pre>
+<p>Potem wystarczy uruchomić program komendą:</p>
+<pre><code>  python3 main.py
+</code></pre>
 <h2 id="co-dalej"><a href="#co-dalej">Co dalej?</a></h2>
 <p>Przejdź do rozdziału Panel Administracyjny by dowiedzieć się więcej o funkcjach dostępnych po uruchomieniu aplikacji.</p>
               
