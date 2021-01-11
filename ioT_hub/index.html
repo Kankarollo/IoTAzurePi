@@ -99,14 +99,7 @@
 
 
   <li class="navtree toctree-l2 inactive">
-    <a class="" href="../webAppGUI/">Interfejs użytkownika</a>
-  </li>
-        
-          
-
-
-  <li class="navtree toctree-l2 inactive">
-    <a class="" href="../cosmoDB/">CosmoDB</a>
+    <a class="" href="../webAppGUI.md">Interfejs użytkownika</a>
   </li>
         
       </ul>
@@ -158,28 +151,38 @@
     
       
 
-  <li class="toctree-l2 current with-children">
-    <a href="#opis">
-      Opis
-      <span class="toctree-expand"></span>
-    </a>
-  </li>
 
 
-
+  <li class="toctree-l2 current">
+    <ul class="subnav-l2 current">
+    
       
-
-  <li class="toctree-l2">
-    <a href="#stworzenie-srodowiska">
-      Stworzenie środowiska
-      <span class="toctree-expand"></span>
-    </a>
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#opis">Opis</a>
+        </li>
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#stworzenie-srodowiska">Stworzenie środowiska</a>
+        </li>
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#dodanie-nowego-urzadzenia">Dodanie nowego urządzenia</a>
+        </li>
+    
+    </ul>
   </li>
-
-
 
 
   
+        
+          
+
+
+  <li class="navtree toctree-l2 inactive">
+    <a class="" href="../cosmoDB/">CosmoDB</a>
+  </li>
         
           
 
@@ -255,8 +258,7 @@
           <div role="main">
             <div class="section">
               
-                <p>IoT Hub</p>
-<p>===============</p>
+                <h1 id="iot-hub">IoT Hub</h1>
 <h2 id="opis"><a href="#opis">Opis</a></h2>
 <p>Iot Hub jest to serwis zarządzania, znajdujący się w chmurze Azure. Do jego zadań należy jest spełnianie funkcji centralnego panelu zarządzania komunikacją dwustronną pomiędzy urządzeniami IoT a aplikacjami je wykorzystującymi. Azure IoT pozwala nam na zapewnienie stabilnej i bezpiecznej komunikację pomiędzy milionami urządzeń IoT i rozwiązaniami backendowymi. Do IoT Hub możemy podłączyć każdy rodzaj urządzenia.</p>
 <p>Funkcje IoT Hub: 
@@ -271,6 +273,19 @@
 <h2 id="stworzenie-srodowiska"><a href="#stworzenie-środowiska">Stworzenie środowiska</a></h2>
 <p>Stworzenie środowiska jest bardzo proste. Opisane jest bardzo dobrze na oficjalnej <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal">stronie Azure'a</a>.</p>
 <p>Nasze rozwiązanie nie jest zależne od konkretnego panelu IoT Hub. Jedyne co jest potrzebne to tzw. CONNECTION STRING, który pozwala na przyłączenie urządzenia do IoT Hub. Z tego powodu każdy z członków zespołu stworzył swój własny panel IoT Hub do własnego użytku.   </p>
+<h2 id="dodanie-nowego-urzadzenia"><a href="#dodanie-nowego-urządzenia">Dodanie nowego urządzenia</a></h2>
+<p>Wejdź w swój panel IoT Hub i wejdź w pole "IoT Devices". </p>
+<p><img src="../media/iot_hub_dodanie_urzadzenia.png" alt="drawing" width="800" height="600"/></p>
+<p>Ukaże ci się panel z wszystkimi dostępnymi urządzeniami IoT, które posiadasz. Aby dodać nowe urządzenie, wybierz opcję "New".</p>
+<p><img src="../media/iot_hub_dodanie_urzadzenia2.png" alt="drawing" width="800" height="600"/></p>
+<p>Jedyne co potrzebujemy zdefiniować to nazwa nowego urządzenia. Zapisz ustawienia i po krótkiej chwili ukaże się nam panel z urządzeniami, na którym możemy zaobserwować nowe dodane urządzenie. Wybierz nowe urządzenie, i skopiuj z niego pole "Primary Connection String".</p>
+<p><img src="../media/iot_hub_dodanie_urzadzenia3.png" alt="drawing" width="800" height="600"/></p>
+<p>Jedyne co nam pozostało to zadeklarować parametr Primary Connection String jako zmienna środowiskowa na urządzeniu pod nazwą:</p>
+<pre><code>   export DEVICE_CONN_STRING='Primary Connection String'
+</code></pre>
+<p>Nowe urządzenie IoT jest skonfigurowane i gotowe do pracy z systemem. Pobierz repozytorium, wejdź do katalogu IoTAzurePi/Device i rozpocznij jego pracę za pomocą komendy:</p>
+<pre><code>    python3 main.py
+</code></pre>
               
             </div>
           </div>
@@ -278,7 +293,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../analizaDanych/" class="btn btn-neutral float-right" title="Analiza danych">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../cosmoDB/" class="btn btn-neutral float-right" title="CosmoDB">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../opis_doniczki/" class="btn btn-neutral" title="Opis doniczki"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -310,7 +325,7 @@
         <span><a href="../opis_doniczki/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../analizaDanych/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../cosmoDB/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
