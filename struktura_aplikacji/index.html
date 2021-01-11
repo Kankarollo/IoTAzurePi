@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Interfejs użytkownika - IoTAzurePi</title>
+  <title>Struktura aplikacji - IoTAzurePi</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Interfejs u\u017cytkownika";
-    var mkdocs_page_input_path = "interfejs_uzytkownika.md";
+    var mkdocs_page_name = "Struktura aplikacji";
+    var mkdocs_page_input_path = "struktura_aplikacji.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -98,11 +98,18 @@
           
 
 
+  <li class="navtree toctree-l2 inactive">
+    <a class="" href="../interfejs_uzytkownika/">Interfejs użytkownika</a>
+  </li>
+        
+          
+
+
   
     
     <li class="navtree toctree-l2 page current">
       <a class="current" href="./">
-        Interfejs użytkownika
+        Struktura aplikacji
           <span class="toctree-expand"></span>
       </a>
     </li>
@@ -115,23 +122,43 @@
     <ul class="subnav-l2 current">
     
       
+          
+
+  <li class="toctree-l3 current with-children">
+    <a href="#konfiguracja-i-uruchamianie-aplikacji">
+      Konfiguracja i uruchamianie aplikacji
+      <span class="toctree-expand"></span>
+    </a>
+  </li>
+
+
+
+  <li class="toctree-l3 current">
+    <ul class="subnav-l3 current">
+    
+      
+        <li class="toctree-l4">
+          <a class="toctree-l5" href="#lokalna">Lokalna</a>
+        </li>
+    
+      
+        <li class="toctree-l4">
+          <a class="toctree-l5" href="#azure-app-service">Azure App Service</a>
+        </li>
+    
+    </ul>
+  </li>
+
+      
+    
+      
         <li class="toctree-l3">
-          <a class="toctree-l4" href="#opis">Opis</a>
+          <a class="toctree-l4" href="#backend-aplikacji">Backend aplikacji</a>
         </li>
     
       
         <li class="toctree-l3">
-          <a class="toctree-l4" href="#schemat-aplikacji">Schemat aplikacji</a>
-        </li>
-    
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#opis-kodu-projektu">Opis kodu projektu</a>
-        </li>
-    
-      
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#status-obecny">Status obecny</a>
+          <a class="toctree-l4" href="#frontend-aplikacji">Frontend aplikacji</a>
         </li>
     
     </ul>
@@ -139,13 +166,6 @@
 
 
   
-        
-          
-
-
-  <li class="navtree toctree-l2 inactive">
-    <a class="" href="../struktura_aplikacji/">Struktura aplikacji</a>
-  </li>
         
       </ul>
     </li>
@@ -260,7 +280,7 @@
         
       
     
-    <li>Interfejs użytkownika</li>
+    <li>Struktura aplikacji</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -270,69 +290,86 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="interfejs-uzytkownika">Interfejs użytkownika</h1>
-<h2 id="opis"><a href="#opis">Opis</a></h2>
-<p>WebAppGUI jest to aplikacja webowa przeznaczona dla użytkownika w celu zarządzania całym środowiskiem. Użytkownik może, za jej pomocą, wizualizować otrzymane dane, oraz sterować parametrami takimi jak wilgotność gleby oraz natężenie światła. Aplikacja może być uruchomiona lokalnie - użytkownik będzie musiał być w tej samej sieci by móc się nią posługiwać, lub uruchomiona na środowisku <em>Azure App Service</em>, przez co użytkownik będzie miał dostęp do aplikacji z każdego miejsca gdzie będzie miał dostęp do internetu.</p>
-<hr />
-<h2 id="schemat-aplikacji"><a href="#schemat-aplikacji">Schemat aplikacji</a></h2>
-<p>Strona główna aplikacji.</p>
-<p><img src="../media/interfejs_home.PNG" alt="drawing" width="600" height="600"/></p>
-<p>Strona analityczna aplikacji</p>
-<p><img src="../media/interfejs_analytics.PNG" alt="drawing" width="600" height="600"/></p>
-<hr />
-<h2 id="opis-kodu-projektu"><a href="#opis-kodu-projektu">Opis kodu projektu</a></h2>
-<p>Kod projektu jest dostępny w branchu <a href="https://github.com/Kankarollo/IoTAzurePi/tree/app_develop"><em>app_develop</em></a>.</p>
-<p>TODO</p>
-<hr />
-<h2 id="status-obecny"><a href="#status-obecny">Status obecny</a></h2>
-<p>Na chwilę obecną udało się stworzyć podstawową wersję prezentacyjną. Pozwala ona na stworzenie wykresu na podstawie otrzymanych danych z Iot Hub'a. W celach testowych aplikacja obsługuje 2 podstawowe typy otrzymanych danych (Temperatura i wilgotność). Wynik jest widoczny na poniższym obrazku. </p>
-<p><img src="../media/WebAppGUI-Demo.png" alt="drawing" width="600" height="600"/></p>
-<p>Prace są wykonywane na branchu <a href="https://github.com/Kankarollo/IoTAzurePi/tree/app_develop">app_develop</a>.</p>
-<p>Wymagane:
- - Wersja python &gt;= 3.6
- - Posiadanie instancji <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal">IoT Hub</a>
- - Posiadanie instancji <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-python">Azure Cosmos DB</a> </p>
-<p>Uruchomienie:</p>
+                <h1 id="struktura-aplikacji">Struktura aplikacji</h1>
+<h2 id="konfiguracja-i-uruchamianie-aplikacji"><a href="#konfiguracja-i-uruchamianie-aplikacji">Konfiguracja i uruchamianie aplikacji</a></h2>
+<h3 id="lokalna">Lokalna</h3>
+<p>Przed uruchomieniem aplikacji należy ustawić 2 zmienne środowiskowe pozwalające na komunikację ze środowiskiem chmurowym Azure:</p>
 <ul>
-<li>
-<p>Ściągnąć repozytorium</p>
-<pre><code>git clone https://github.com/Kankarollo/IoTAzurePi.git
-</code></pre>
-</li>
-<li>
-<p>Przenieść się na branch komunikacji dwustronnej</p>
-<pre><code>git checkout origin\app_develop
-</code></pre>
-</li>
-<li>
-<p>Zainstalować wymagane biblioteki :</p>
-<pre><code>python -m pip -r requirements.txt
-</code></pre>
-</li>
-<li>
-<p>Ustawić zmienne środowiskowe</p>
-</li>
-<li>IotHubConnectionString - Znajdziemy je w iot hub/Shared access policies/service pole Connection string-primary key.</li>
-<li>EventHubConsumerGroup - W iot hub/settings/built-in endpoints nazwa Consumer Groups. Domyślnie - "$Default".</li>
-<li>
-<p>mongoDBConnectionString - azure comsos DB account/Settings/Connection String/ Pole <strong>Primary Connection String</strong></p>
-<p><strong>Linux</strong></p>
-<pre><code>export IotHubConnectionString='device connection string'
-export EventHubConsumerGroup='event '
-export mongoDBConnectionString='device connection string'
-</code></pre>
-<p><strong>Windows (cmd)</strong></p>
-<pre><code>set IotHubConnectionString='device connection string'
-set EventHubConsumerGroup='event '
-set mongoDBConnectionString='device connection string'
-</code></pre>
-</li>
-<li>
-<p>Uruchom program main.py</p>
-<pre><code>python main.py
-</code></pre>
-</li>
+<li><em>IotHubConnectionString</em> - łańcuch znaków identyfikujący usługę IoTHub</li>
+<li><em>EventHubConsumerGroup</em> - nazwa identyfikująca usługę EventHub, w przypadku IoT Hub jest to domyślnie "$Default"</li>
 </ul>
+<p>W przypadku gdy chcemy zapisywać otrzymane dane do bazy danych należy ustawić zmienną środowiskową:</p>
+<ul>
+<li><em>MongoDBConnectionString</em> - łańcuch znaków identyfikujący bazę danych MongoDB (może to być zarówno lokalna baza danych jak i umieszczona w chmurze np. Azure CosmosDB).</li>
+</ul>
+<p>Aby zainstalować wszystkie zależności wymagane przez aplikację należy przejść do folderu, gdzie znajduje się plik <em>packages.json</em>  i użyć komendy: <code>npm install</code></p>
+<p>Aplikacja może zostać skonfigurowana poprzez edycję pliku konfiguracyjnego <code>config.js</code>, który znajduje się w folderze <code>utils</code>. Dostępne opcje konfiguracyjne:</p>
+<ul>
+<li>mongo.db_name - nazwa bazy danych, w której przechowywane są dane archiwalne</li>
+<li>mongo.db_collection - nazwa kolekcji</li>
+<li>app.port - port, na który wystawiana jest aplikacja</li>
+<li>requester.timeout - częstotliwość z jaką aplikacja wysyła zapytania o dane (podawana w milisekundach)</li>
+<li>requester.message - treść wiadomości wysyłanej przez aplikację w danym odstępie czasowym</li>
+</ul>
+<p>Aby uruchomić aplikację należy użyć komendy: <code>npm start</code></p>
+<h3 id="azure-app-service">Azure App Service</h3>
+<p><code>UWAGA</code>
+<code>Usługa Azure App Service musi być umieszczona na maszynie z systemem operacyjnym Windows</code></p>
+<p>Zmienne środowiskowe pozwalające na połączenie z usługą Azure Iot Hub należy ustawić w zakładce <code>Settings/Configuration/Application Settings</code>.</p>
+<p>W zakładce <code>Settings/Configuration/General Settings</code> należy zezwolić na użycie "Web sockets". Pozwoli to na odczytywanie danych w czasie rzeczywistym.</p>
+<h2 id="backend-aplikacji"><a href="#backend-aplikacji">Backend aplikacji</a></h2>
+<p>Aplikacja została napisana w NodeJS, przy wykorzystaniu frameworka express.js (ver 4.17.1). Wymagane wersje:</p>
+<ul>
+<li>npm &gt;= 6.0.0</li>
+<li>node &gt;= 10.6</li>
+</ul>
+<p>Aplikacja udostępnia następujące endpointy GET:</p>
+<ul>
+<li>/ - główna strona dashboardu</li>
+<li>/analytics - strona, pozwalająca na przeglądanie danych z bazy danych</li>
+<li>/version - zwraca wersję aplikacji (GET)</li>
+<li>/measures/model - zwraca wszystkie rodzaje pomiarów (temperatura, wilgotność etc...) GET</li>
+<li>/device - zwraca listę wszystkich urządzeń z bazy danych (GET)</li>
+</ul>
+<p>Aplikacja udostępnia następujące endpointy POST:</p>
+<ul>
+<li>/measures - zwraca pomiary z bazy danych według podanego filtru (POST)</li>
+</ul>
+<p>Struktura zapytania:</p>
+<pre><code class="json">{
+    DeviceId: Array,
+    MessageDate:{
+        $gte: ISOString,
+        $lte: ISOString
+    }
+}
+</code></pre>
+
+<ul>
+<li>/device/:deviceId - wysyła wiadomość do danego urządzenia (POST) (deviceId jest to ID urządzenia)</li>
+</ul>
+<p>Struktura zapytania:</p>
+<pre><code class="json">{
+    message: String
+}
+</code></pre>
+
+<p>Do przekazywania danych telemetrii w czasie rzeczywistym z serwera do klienta wykorzstywany jest protokół WebSocket. Dane są zapisywane do bazy danych MongoDB z wykorzystaniem modułu mongoose, zgodnie z następującym modelem:</p>
+<pre><code class="json">{
+    MessageDate: ISOString,
+    DeviceId: String,
+    IotData: {
+        humidity: Double,
+        temperature: Double,
+        light: Double,
+        ground: Double,
+    },
+}
+</code></pre>
+
+<h2 id="frontend-aplikacji"><a href="#frontend-aplikacji">Frontend aplikacji</a></h2>
+<p>TODO</p>
+<p>Do rysowania wykresów wykorzystany został moduł Chart.js.</p>
               
             </div>
           </div>
@@ -340,10 +377,10 @@ set mongoDBConnectionString='device connection string'
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../struktura_aplikacji/" class="btn btn-neutral float-right" title="Struktura aplikacji">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../opis_doniczki/" class="btn btn-neutral float-right" title="Opis doniczki">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../obsluga_projektu/" class="btn btn-neutral" title="Obsługa"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../interfejs_uzytkownika/" class="btn btn-neutral" title="Interfejs użytkownika"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -369,10 +406,10 @@ set mongoDBConnectionString='device connection string'
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../obsluga_projektu/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../interfejs_uzytkownika/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../struktura_aplikacji/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../opis_doniczki/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
