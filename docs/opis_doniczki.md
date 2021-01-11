@@ -1,13 +1,59 @@
-Dokumentacja techniczna części sprzętowej
-======================
+
+Opis doniczki
+====================
+
+## [Opis całego schematu](#opis-calego-schematu)
+
+Gotowy schemat połączeniowy doniczki zaprezentowano poniżej:
+
+<img src="../media/schemat_urzadzenia_iot.png" alt="drawing" width="600" height="600"/>
+
+Składa się on z:
+
+- lampki LED
+- czujnika wilgotności gleby
+- przetwornika analogowo-cyfrowego
+- czujnika natężenia światła
+- czujnika temperatury i wilgotności
+- pompki do wody
+- mostka H
+
+Do pomiaru temperatury i wilgotności użyto czujnik wilgotności DHT11. Został on umieszczony na zewnętrznej części doniczki, aby zbierać pomiar temperatury i wilgotności pomieszczenia. Urządzenie komunikuje się z Raspberry Pi za pomocą interfejsu jednoprzewodowego podłączonego do GPIO 17. DHT11 umieszczony na doniczce:
+
+<img src="../media/doniczka_DHT11.jpeg" alt="drawing" width="600" height="600"/>
+
+W celu zmierzenia naświetlenia rośliny wykorzystano czujnik natężenia światła BH1750. Zamieszczono go na brzegu doniczki, nad powierzchnią gleby, aby znajdował się na podobnym poziomie co roślina i jego wyniki jak najdokładniej oddawały warunki uprawianej rośliny. Czujnik jest cyfrowy i komunikuje się z jednostką centralną za pomocą magistrali I2C.
+
+
+<img src="../media/doniczka_BH1750.jpeg" alt="drawing" width="600" height="600"/>
+
+Pomiar wilgotności gleby odbywa się za pomocą sondy pomiarowej umieszczonej w glebie, która została podłączona do detektora. Pod wpływem wilgotności zmienia się rezystancja sondy i detektor generuje sygnał proporcjonalny do wilgotności. Sygnał ten jest sygnałem analogowym. Raspberry Pi nie ma wbudowanego przetwornika analogowo-cyfrowego, więc zastosowano zewnętrzny moduł ADS1115. Jest to moduł z przetwornikiem analogowo-cyfrowym o rozdzielczości 16 bitów i komunikujący się za pomocą magistrali I2C. Detektor podłączono do modułu, a moduł został podłączony do Raspberry Pi. Konwersja sygnału otrzymanego z detektora jest realizowana w jednostce centralnej
+
+<img src="../media/doniczka_sonda_wilgotnosci.jpeg" alt="drawing" width="600" height="600"/>
+
+
+Lampka i silnik są sterowane za pomocą dwukanałowego mostka H - L293D. Mostek ten jest zasilany napięciem 5V i za pomocą sygnałów PWM generowanych przez Raspberry Pi możliwe sterowanie natężeniem światła lub pompką. Mostek ma wbudowane diody zabezpieczające, dzięki którym możemy zabezpieczyć Raspberry Pi przed zwarciem. Do silnika została podłączona gumowa rurka, a silnik został umieszczony w zbiorniku z wodą. Lampka została umieszczona w glebie, a przewody zasilające zostały zabezpieczone przed wilgocią.
+
+
+<img src="../media/doniczka_lampka.jpeg" alt="drawing" width="600" height="600"/>
+
+
+<img src="../media/doniczka_rurka.jpeg" alt="drawing" width="600" height="600"/>
+
+
+Gotowa doniczka prezentuje się następująco:
+
+<img src="../media/doniczka_calosc.jpeg" alt="drawing" width="600" height="600"/>
+
+
+Opis czujników
+====================
 
 Do zrealizowania części sprzętowej skorzystano z modułów komunikacyjnych wbudowanych w platformę mikroprocesorową Raspberry Pi. Rozpisane piny urządzenia znajdują się na rysunku poniżej:
 
 ---------
 ## [Czujnik temperatury i wilgotności DHT11](#czujnik-temperatury-i-wilgotności-dht11)
 
-
-<img src="../media/GPIO-Pinout-Diagram-2.png" alt="drawing" width="600" height="600"/>
 
 Do pomiaru temperatury i wilgotności użyto czujnik wilgotności DHT11. Jest to czujnik cyfrowy z interfejsem jednoprzewodowym. Zakres jego pracy dla temperatury to od -20 °C do +60 °C, a wilgotności od 5 % do 95 % RH. Czujnik ma rozdzielczość 8-bitową, przez co jego dokładność to 1°C oraz ±1 % RH.
 
@@ -16,6 +62,7 @@ Do pomiaru temperatury i wilgotności użyto czujnik wilgotności DHT11. Jest to
 
 Czujnik podłączony został do napięcia 3.3 V urządzenia Raspberry Pi (pin 1), uziemienie do pinu 9 oraz dane zostały podłączone do GPIO 17 dostępnego na pinie 11.
 W celu poprawnej komunikacji jednoprzewodowej konieczne jest zastosowanie rezystora pomiędzy napięciem a linią danych. Rezystor powinien mieć wartość o 4.7k do 10k Ohm. Połączenie czujnika z RPi zostało przedstawione na poniższym rysunku:
+
 
 
 <img src="../media/DHT11_pi.png" alt="drawing" width="400" height="400"/>
@@ -69,6 +116,7 @@ Czujnik podłączony został do napięcia 3.3 V z urządzenia Raspberry Pi, uzie
 Do komunikacji z czujnikiem wykorzystano magistralę I2C. Po podłączeniu pinu ADD do uziemienie urządzenie ma adres 0x23. Można ustawić różne tryby odczytu. Wykorzystany został tryb 0x20, jest to tryb umożliwiający odczyt z dokładnością do 1 lx oraz pozwalający na wyłączenie urządzenia po odczycie w celu oszczędzenia energii. Przykładowy kod w języku Python:
 
         
+        ```
         def convert_GY30_to_Number(data):
         # Simple function to convert 2 bytes of data
         # into a decimal number.
@@ -82,6 +130,7 @@ Do komunikacji z czujnikiem wykorzystano magistralę I2C. Po podłączeniu pinu 
         # Device is automatically set to Power Down after measurement.
         data = bus.read_i2c_block_data(0x23,0x20)
         return convert_GY30_to_Number(data)
+        ```
 
 ---------
 ## [Czujnik wilgotności gleby](#czujnik-wilgotności-gleby)

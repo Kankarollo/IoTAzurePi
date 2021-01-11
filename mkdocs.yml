@@ -1,11 +1,18 @@
-site_name: Projekt Grupowy
+site_name: IoTAzurePi
 nav:
-  - Home: index.md
-  - Czujniki: opis_czujnikow.md
-  - Komunikacja: komunikacja.md
-  - Analiza danych: analizaDanych.md
-  - CosmoDB: cosmoDB.md
-  - WebAbbGUI: webAppGUI.md
-  - Dokumentacja: dokumentacja.md
-theme: readthedocs
+  - Wprowadzenie: 
+    - Opis projektu: index.md
+    - Od czego zacząć?: instalacja_uruchomienie.md
+  - Panel administracyjny: 
+    - Interfejs użytkownika: interfejs_uzytkownika.md
+    - Struktura aplikacji: struktura_aplikacji.md
+  - Urządzenie IoT:
+    - Opis doniczki: opis_doniczki.md
+  - Azure:
+    - IoT Hub: ioT_hub.md
+    - CosmoDB: 'cosmoDB.md'
+  - Dokumentacja: 
+    - Edycja dokumentacji: dokumentacja.md
+theme: rtd-dropdown
+repo_url: https://github.com/Kankarollo/IoTAzurePi
 

@@ -1,4 +1,4 @@
-Dokumentacja
+Edycja dokumentacji
 =====================
 
 ## [Edycja dokumentacji](#edycja-dokumentacji)

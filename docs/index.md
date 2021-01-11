@@ -1,7 +1,5 @@
-IoTAzurePi - 2@KSDE'2020 Rozproszony system monitoringu zrealizowany w oparciu o chmurę i internet rzeczy
-=======================
-
-## [Opis projektu](#opis-projektu)
+Opis projektu
+===================
 
 Celem projektu jest opracowanie rozproszonego systemu monitorowania,
 zrealizowanego korzystając z chmury (AWS, Azure), oraz koncepcji
