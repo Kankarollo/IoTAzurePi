@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Opis czujnikow - IoTAzurePi</title>
+  <title>Opis doniczki - IoTAzurePi</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Opis czujnikow";
-    var mkdocs_page_input_path = "opis_czujnikow.md";
+    var mkdocs_page_name = "Opis doniczki";
+    var mkdocs_page_input_path = "opis_doniczki.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -126,9 +126,69 @@
           
 
 
-  <li class="navtree toctree-l2 inactive">
-    <a class="" href="../opis_doniczki/">Opis doniczki</a>
+  
+    
+    <li class="navtree toctree-l2 page current">
+      <a class="current" href="./">
+        Opis doniczki
+          <span class="toctree-expand"></span>
+      </a>
+    </li>
+    
+      
+
+
+
+  <li class="toctree-l2 current">
+    <ul class="subnav-l2 current">
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#opis-calego-schematu">Opis calego schematu</a>
+        </li>
+    
+    </ul>
   </li>
+
+      
+
+  <li class="toctree-l2">
+    <a href="#opis-czujnikow">
+      Opis czujników
+      <span class="toctree-expand"></span>
+    </a>
+  </li>
+
+
+
+  <li class="toctree-l2">
+    <ul class="subnav-l2 toc-hidden">
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#czujnik-temperatury-i-wilgotnosci-dht11">Czujnik temperatury i wilgotności DHT11</a>
+        </li>
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#czujnik-natezenia-swiata">Czujnik natężenia światła</a>
+        </li>
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#czujnik-wilgotnosci-gleby">Czujnik wilgotności gleby</a>
+        </li>
+    
+      
+        <li class="toctree-l3">
+          <a class="toctree-l4" href="#pompa-do-wody">Pompa do wody</a>
+        </li>
+    
+    </ul>
+  </li>
+
+
+  
         
       </ul>
     </li>
@@ -210,8 +270,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Urządzenie IoT &raquo;</li>
+        
+      
     
-    <li>Opis czujnikow</li>
+    <li>Opis doniczki</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -221,7 +285,30 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="opis-czujnikow">Opis czujników</h1>
+                <h1 id="opis-doniczki">Opis doniczki</h1>
+<h2 id="opis-calego-schematu"><a href="#opis-calego-schematu">Opis calego schematu</a></h2>
+<p>Gotowy schemat połączeniowy doniczki zaprezentowano poniżej:</p>
+<p><img src="../media/schemat_urzadzenia_iot.png" alt="drawing" width="600" height="600"/></p>
+<p>Składa się on z:
+- lampki LED
+- czujnika wilgotności gleby
+- przetwornika analogowo-cyfrowego
+- czujnika natężenia światła
+- czujnika temperatury i wilgotności
+- pompki do wody
+- mostka H</p>
+<p>Do pomiaru temperatury i wilgotności użyto czujnik wilgotności DHT11. Został on umieszczony na zewnętrznej części doniczki, aby zbierać pomiar temperatury i wilgotności pomieszczenia. Urządzenie komunikuje się z Raspberry Pi za pomocą interfejsu jednoprzewodowego podłączonego do GPIO 17. DHT11 umieszczony na doniczce:</p>
+<p><img src="../media/doniczka_DHT11.jpeg" alt="drawing" width="600" height="600"/></p>
+<p>W celu zmierzenia naświetlenia rośliny wykorzystano czujnik natężenia światła BH1750. Zamieszczono go na brzegu doniczki, nad powierzchnią gleby, aby znajdował się na podobnym poziomie co roślina i jego wyniki jak najdokładniej oddawały warunki uprawianej rośliny. Czujnik jest cyfrowy i komunikuje się z jednostką centralną za pomocą magistrali I2C.</p>
+<p><img src="../media/doniczka_BH1750.jpeg" alt="drawing" width="600" height="600"/></p>
+<p>Pomiar wilgotności gleby odbywa się za pomocą sondy pomiarowej umieszczonej w glebie, która została podłączona do detektora. Pod wpływem wilgotności zmienia się rezystancja sondy i detektor generuje sygnał proporcjonalny do wilgotności. Sygnał ten jest sygnałem analogowym. Raspberry Pi nie ma wbudowanego przetwornika analogowo-cyfrowego, więc zastosowano zewnętrzny moduł ADS1115. Jest to moduł z przetwornikiem analogowo-cyfrowym o rozdzielczości 16 bitów i komunikujący się za pomocą magistrali I2C. Detektor podłączono do modułu, a moduł został podłączony do Raspberry Pi. Konwersja sygnału otrzymanego z detektora jest realizowana w jednostce centralnej</p>
+<p><img src="../media/doniczka_sonda_wilgotnosci.jpeg" alt="drawing" width="600" height="600"/></p>
+<p>Lampka i silnik są sterowane za pomocą dwukanałowego mostka H - L293D. Mostek ten jest zasilany napięciem 5V i za pomocą sygnałów PWM generowanych przez Raspberry Pi możliwe sterowanie natężeniem światła lub pompką. Mostek ma wbudowane diody zabezpieczające, dzięki którym możemy zabezpieczyć Raspberry Pi przed zwarciem. Do silnika została podłączona gumowa rurka, a silnik został umieszczony w zbiorniku z wodą. Lampka została umieszczona w glebie, a przewody zasilające zostały zabezpieczone przed wilgocią.</p>
+<p><img src="../media/doniczka_lampka.jpeg" alt="drawing" width="600" height="600"/></p>
+<p><img src="../media/doniczka_rurka.jpeg" alt="drawing" width="600" height="600"/></p>
+<p>Gotowa doniczka prezentuje się następująco:</p>
+<p><img src="../media/doniczka_calosc.jpeg" alt="drawing" width="600" height="600"/></p>
+<h1 id="opis-czujnikow">Opis czujników</h1>
 <p>Do zrealizowania części sprzętowej skorzystano z modułów komunikacyjnych wbudowanych w platformę mikroprocesorową Raspberry Pi. Rozpisane piny urządzenia znajdują się na rysunku poniżej:</p>
 <hr />
 <h2 id="czujnik-temperatury-i-wilgotnosci-dht11"><a href="#czujnik-temperatury-i-wilgotności-dht11">Czujnik temperatury i wilgotności DHT11</a></h2>
@@ -293,6 +380,15 @@ Maksymalny prąd, który może być pobierany z zasilania 5V urządzenia Raspber
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ioT_hub/" class="btn btn-neutral float-right" title="IoT Hub">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../cosmoDB/" class="btn btn-neutral" title="CosmoDB"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
@@ -315,6 +411,10 @@ Maksymalny prąd, który może być pobierany z zasilania 5V urządzenia Raspber
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href="../cosmoDB/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ioT_hub/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
