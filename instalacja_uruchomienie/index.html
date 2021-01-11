@@ -81,15 +81,77 @@
     
       
 
+  <li class="toctree-l2 current with-children">
+    <a href="#jak-zaczac">
+      Jak zacząć?
+      <span class="toctree-expand"></span>
+    </a>
+  </li>
+
 
 
   <li class="toctree-l2 current">
     <ul class="subnav-l2 current">
     
       
-        <li class="toctree-l3">
-          <a class="toctree-l4" href="#jak-uruchomic">Jak uruchomić?</a>
+          
+
+  <li class="toctree-l3 current with-children">
+    <a href="#instalacja">
+      Instalacja
+      <span class="toctree-expand"></span>
+    </a>
+  </li>
+
+
+
+  <li class="toctree-l3 current">
+    <ul class="subnav-l3 current">
+    
+      
+        <li class="toctree-l4">
+          <a class="toctree-l5" href="#aplikacja-webowa">Aplikacja webowa</a>
         </li>
+    
+      
+        <li class="toctree-l4">
+          <a class="toctree-l5" href="#urzadzenie-iot">Urządzenie IoT</a>
+        </li>
+    
+    </ul>
+  </li>
+
+      
+    
+      
+          
+
+  <li class="toctree-l3">
+    <a href="#jak-uruchomic">
+      Jak uruchomić?
+      <span class="toctree-expand"></span>
+    </a>
+  </li>
+
+
+
+  <li class="toctree-l3">
+    <ul class="subnav-l3 toc-hidden">
+    
+      
+        <li class="toctree-l4">
+          <a class="toctree-l5" href="#aplikacja-webowa_1">Aplikacja webowa</a>
+        </li>
+    
+      
+        <li class="toctree-l4">
+          <a class="toctree-l5" href="#urzadzenie-iot_1">Urządzenie IoT</a>
+        </li>
+    
+    </ul>
+  </li>
+
+      
     
       
         <li class="toctree-l3">
@@ -260,7 +322,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="instalacja">Instalacja</h1>
+                <h1 id="jak-zaczac">Jak zacząć?</h1>
+<h2 id="instalacja"><a href="#instalacja">Instalacja</a></h2>
 <p>Do zainstalowania systemu potrzebujemy wcześniej:</p>
 <ul>
 <li>Konto na platformie microsoft Azure a na nim:</li>
@@ -268,9 +331,44 @@
 <li>Panel cosmoDB (Sprawdź rozdział CosmoDB)</li>
 <li>Urządzenie IoT z zainstalowanym pythonem3 (w przypadku braku takiego urządzenia sprawdź sekcje <a href="#symulacja-urządzenia">Symulacja urządzenia</a>.)</li>
 </ul>
+<h3 id="aplikacja-webowa">Aplikacja webowa</h3>
+<p>Przed uruchomieniem aplikacji należy ustawić 2 zmienne środowiskowe pozwalające na komunikację ze środowiskiem chmurowym Azure:</p>
+<ul>
+<li><em>IotHubConnectionString</em> - łańcuch znaków identyfikujący usługę IoTHub</li>
+<li><em>EventHubConsumerGroup</em> - nazwa identyfikująca usługę EventHub, w przypadku IoT Hub jest to domyślnie "$Default"</li>
+</ul>
+<p>W przypadku gdy chcemy zapisywać otrzymane dane do bazy danych należy ustawić zmienną środowiskową:</p>
+<ul>
+<li><em>MongoDBConnectionString</em> - łańcuch znaków identyfikujący bazę danych MongoDB (może to być zarówno lokalna baza danych jak i umieszczona w chmurze np. Azure CosmosDB).</li>
+</ul>
+<p>Aplikacja może zostać skonfigurowana poprzez edycję pliku konfiguracyjnego <code>config.js</code>, który znajduje się w folderze <code>utils</code>. Dostępne opcje konfiguracyjne:</p>
+<ul>
+<li>mongo.db_name - nazwa bazy danych, w której przechowywane są dane archiwalne</li>
+<li>mongo.db_collection - nazwa kolekcji</li>
+<li>app.port - port, na który wystawiana jest aplikacja</li>
+<li>requester.timeout - częstotliwość z jaką aplikacja wysyła zapytania o dane (podawana w milisekundach)</li>
+<li>requester.message - treść wiadomości wysyłanej przez aplikację w danym odstępie czasowym</li>
+</ul>
+<h3 id="urzadzenie-iot">Urządzenie IoT</h3>
+<p>Przed uruchomieniem danego urządzenia IoT należy zdefiniować zmienną środowiskową:</p>
+<pre><code>   export DEVICE_CONN_STRING='Primary Connection String'
+</code></pre>
 <hr />
 <h2 id="jak-uruchomic"><a href="#jak-uruchomić">Jak uruchomić?</a></h2>
-<p>TODO:Jak się ma już wszystko to jak uruchomić</p>
+<h3 id="aplikacja-webowa_1">Aplikacja webowa</h3>
+<p>Przed uruchomieniem należy zainstalować wszystkie zależności wymagane przez aplikację należy przejść do folderu, gdzie znajduje się plik <em>packages.json</em>  i użyć komendy:</p>
+<pre><code>  npm install
+</code></pre>
+<p>Po instalacji, uruchamiamy aplikacjję za pomocą komendy:</p>
+<pre><code>  npm start
+</code></pre>
+<h3 id="urzadzenie-iot_1">Urządzenie IoT</h3>
+<p>Przed instalacją należy zainstalować wszystkie potrzebne biblioteki do prawidłowego działania systemu. Wejdź do folderu Device i uruchom instalację z pomocą komendy:</p>
+<pre><code>  python3 -m pip install -r requirements.txt
+</code></pre>
+<p>Potem wystarczy uruchomić program komendą:</p>
+<pre><code>  python3 main.py
+</code></pre>
 <h2 id="symulacja-urzadzenia"><a href="#symulacja-urządzenia">Symulacja urządzenia</a></h2>
               
             </div>
