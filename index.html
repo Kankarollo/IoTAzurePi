@@ -8,7 +8,7 @@
   <meta name="description" content="None">
   
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>TEST - IoTAzurePi</title>
+  <title>Home - IoTAzurePi</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "TEST";
+    var mkdocs_page_name = "Home";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = null;
   </script>
@@ -64,7 +64,7 @@
 
 
   <li class="navtree toctree-l2 inactive">
-    <a class="" href="opis_projektu/">Opis projektu</a>
+    <a class="" href="opis_projektu.md">Opis projektu</a>
   </li>
         
           
@@ -211,7 +211,7 @@
     
       
     
-    <li>TEST</li>
+    <li>Home</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -221,7 +221,29 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="test">TEST</h1>
+                <h2 id="opis-projektu"><a href="#opis-projektu">Opis projektu</a></h2>
+<p>Celem projektu jest opracowanie rozproszonego systemu monitorowania,
+zrealizowanego korzystając z chmury (AWS, Azure), oraz koncepcji
+internetu rzeczy. W ramach projektu należy przygotować urządzenia
+pomiarowe / monitorujące na bazie komputerów Raspberry Pi, które
+umożliwią zbieranie oraz przesyłanie danych do platformy
+administracyjnej / nadzorującej zrealizowanej na bazie dostępnych
+rozwiązań chmurowych (IoT Core, IoT Hub). System musi umożliwiać zarówna
+odbieranie wiadomości z urządzeń pomiarowych i przetwarzanie ich na
+platformie chmurowej, jak i wysyłanie wiadomości (na przykład danych
+konfiguracyjnych) z panelu administracyjnego w chmurze do urządzeń
+pomiarowych. Dodatkowo panel administracyjny powinien umożliwiać
+przeprowadzenia analiz na danych pomiarowych.</p>
+<hr />
+<h2 id="zastosowanie-projektu-iot-ogrod"><a href="#zastosowanie-projektu---iot-ogród">Zastosowanie projektu - IoT ogród</a></h2>
+<p><a href="https://www.hackster.io/105122/smart-plant-iot-59cbc3">Inspiracja.</a> </p>
+<p>Poprzez aplikację WebAppGUI użytkownik mógłby zarządzać swoimi roślinami oraz obserwować dane wysyłane z czujników (temperatura, wilgotność pomieszczenia, wilgotność gleby, natężenie światła) za pomocą prostego GUI. Znajdowałyby się tam odpowiednie funkcję:</p>
+<ul>
+<li>Wizualizacja danych otrzymanych z czujników</li>
+<li>Możliwość sterowania parametrami takimi jak wilgotność gleby czy natężenie światła za pomocą pompki z wodą oraz żarówką, które są sterowane poprzez RaspberryPi.</li>
+<li>Przechowywanie danych w bazie danych CosmoDB</li>
+</ul>
+<p><img src="media/Schemat.png" alt="drawing" width="600" height="800"/></p>
               
             </div>
           </div>
@@ -261,5 +283,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-01-10 16:57:42.165097+00:00
+Build Date UTC : 2021-01-11 11:25:08.846508+00:00
 -->
