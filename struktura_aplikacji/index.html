@@ -350,8 +350,31 @@
 </code></pre>
 
 <h2 id="frontend-aplikacji"><a href="#frontend-aplikacji">Frontend aplikacji</a></h2>
-<p>TODO</p>
-<p>Do rysowania wykresów wykorzystany został moduł Chart.js.</p>
+<p>Frontend aplikacji został napisany bez użycia nowoczesnych frameworków. Użyty został czysty HTML wraz z plikami typu .js.
+Używamy bibliotek takich jak jQuery czy bootstrap do łatwiejszej pracy. </p>
+<p>Pliki dotyczące samej strony znajdują się w folderze WebApp/public. Strona składa się z dwóch stron i tak też znajdziemy tam 2 pliki html, wraz z 2 plikami js do ich obsługi. Struktura strony frontendowej aplikacji:</p>
+<pre><code>    /public
+    - index.html                          #Strona główna aplikacji.
+    - analytics.html                      #Strona analityczna aplikacji
+    - /js
+        - frontendController.js         #Plik javascript zarządzający stroną główną
+        - analyticsController.js        #Plik javascript zarządzający stroną analityczną
+</code></pre>
+<p>Frontend komunikuję się ze stroną serwerową (backendem) za pomocą WebSocketów. Przyjmowane są wiadomości o następującej strukturze:</p>
+<pre><code>    ```json
+        {
+            MessageDate: ISOString,
+            DeviceId: String,
+            IotData: {
+                humidity: Double,
+                temperature: Double,
+                light: Double,
+                ground: Double,
+            },
+        }
+    ```
+</code></pre>
+<p>Po otrzymaniu następującego komunikatu aplikacja aktualizuje swoje dane i wyświetla je wraz z pomocą modułu Chart.js</p>
               
             </div>
           </div>
