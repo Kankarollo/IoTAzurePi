@@ -13,10 +13,14 @@ nav:
     - CosmoDB: 'cosmoDB.md'
   - Dokumentacja: 
     - Edycja dokumentacji: dokumentacja.md
-theme: rtd-dropdown
+theme: readthedocs
 repo_url: https://github.com/Kankarollo/IoTAzurePi
 plugins:
-    - search
-    - pdf-export
+    - with-pdf:
+        cover_title: Projekt Grupowy - Dokumentacja
+        cover_subtitle: Dokumentacja online - https://kankarollo.github.io/IoTAzurePi
+        author: Paweł Kankowski, Katarzyna Martek, Igor Marzyński, Kacper Rosiński
+    
+    
 
 
