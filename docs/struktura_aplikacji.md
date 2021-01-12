@@ -58,7 +58,6 @@ Aplikacja udostępnia następujące endpointy POST:
 
 Struktura zapytania:
 
-```json
 {
     DeviceId: Array,
     MessageDate:{
@@ -66,21 +65,21 @@ Struktura zapytania:
         $lte: ISOString
     }
 }
-```
+
 
 * /device/:deviceId - wysyła wiadomość do danego urządzenia (POST) (deviceId jest to ID urządzenia)
 
 Struktura zapytania:
 
-```json
+
 {
     message: String
 }
-```
+
 
 Do przekazywania danych telemetrii w czasie rzeczywistym z serwera do klienta wykorzstywany jest protokół WebSocket. Dane są zapisywane do bazy danych MongoDB z wykorzystaniem modułu mongoose, zgodnie z następującym modelem:
 
-```json
+
 {
     MessageDate: ISOString,
     DeviceId: String,
@@ -91,10 +90,36 @@ Do przekazywania danych telemetrii w czasie rzeczywistym z serwera do klienta wy
         ground: Double,
     },
 }
-```
+
 
 ## [Frontend aplikacji](#frontend-aplikacji)
 
-TODO
 
-Do rysowania wykresów wykorzystany został moduł Chart.js.
+Frontend aplikacji został napisany bez użycia nowoczesnych frameworków. Użyty został czysty HTML wraz z plikami typu .js.
+Używamy bibliotek takich jak jQuery czy bootstrap do łatwiejszej pracy.
+
+Pliki dotyczące samej strony znajdują się w folderze WebApp/public. Strona składa się z dwóch stron i tak też znajdziemy tam 2 pliki html, wraz z 2 plikami js do ich obsługi. Struktura strony frontendowej aplikacji:
+
+/public
+- index.html                          #Strona główna aplikacji.
+- analytics.html                      #Strona analityczna aplikacji
+- /js
+    - frontendController.js         #Plik javascript zarządzający stroną główną
+    - analyticsController.js        #Plik javascript zarządzający stroną analityczną
+
+Frontend komunikuję się ze stroną serwerową (backendem) za pomocą WebSocketów. Przyjmowane są wiadomości o następującej strukturze:
+
+        
+{
+    MessageDate: ISOString,
+    DeviceId: String,
+    IotData: {
+        humidity: Double,
+        temperature: Double,
+        light: Double,
+        ground: Double,
+    },
+}
+        
+
+Po otrzymaniu następującego komunikatu aplikacja aktualizuje swoje dane i wyświetla je wraz z pomocą modułu Chart.js

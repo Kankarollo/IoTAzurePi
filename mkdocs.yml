@@ -15,4 +15,8 @@ nav:
     - Edycja dokumentacji: dokumentacja.md
 theme: rtd-dropdown
 repo_url: https://github.com/Kankarollo/IoTAzurePi
+plugins:
+    - search
+    - pdf-export
+
 
