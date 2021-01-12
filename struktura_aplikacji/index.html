@@ -318,26 +318,22 @@
 <li>/measures - zwraca pomiary z bazy danych według podanego filtru (POST)</li>
 </ul>
 <p>Struktura zapytania:</p>
-<pre><code class="json">{
+<p>{
     DeviceId: Array,
     MessageDate:{
         $gte: ISOString,
         $lte: ISOString
     }
-}
-</code></pre>
-
+}</p>
 <ul>
 <li>/device/:deviceId - wysyła wiadomość do danego urządzenia (POST) (deviceId jest to ID urządzenia)</li>
 </ul>
 <p>Struktura zapytania:</p>
-<pre><code class="json">{
+<p>{
     message: String
-}
-</code></pre>
-
+}</p>
 <p>Do przekazywania danych telemetrii w czasie rzeczywistym z serwera do klienta wykorzstywany jest protokół WebSocket. Dane są zapisywane do bazy danych MongoDB z wykorzystaniem modułu mongoose, zgodnie z następującym modelem:</p>
-<pre><code class="json">{
+<p>{
     MessageDate: ISOString,
     DeviceId: String,
     IotData: {
@@ -346,34 +342,28 @@
         light: Double,
         ground: Double,
     },
-}
-</code></pre>
-
+}</p>
 <h2 id="frontend-aplikacji"><a href="#frontend-aplikacji">Frontend aplikacji</a></h2>
 <p>Frontend aplikacji został napisany bez użycia nowoczesnych frameworków. Użyty został czysty HTML wraz z plikami typu .js.
-Używamy bibliotek takich jak jQuery czy bootstrap do łatwiejszej pracy. </p>
+Używamy bibliotek takich jak jQuery czy bootstrap do łatwiejszej pracy.</p>
 <p>Pliki dotyczące samej strony znajdują się w folderze WebApp/public. Strona składa się z dwóch stron i tak też znajdziemy tam 2 pliki html, wraz z 2 plikami js do ich obsługi. Struktura strony frontendowej aplikacji:</p>
-<pre><code>    /public
-    - index.html                          #Strona główna aplikacji.
-    - analytics.html                      #Strona analityczna aplikacji
-    - /js
-        - frontendController.js         #Plik javascript zarządzający stroną główną
-        - analyticsController.js        #Plik javascript zarządzający stroną analityczną
-</code></pre>
+<p>/public
+- index.html                          #Strona główna aplikacji.
+- analytics.html                      #Strona analityczna aplikacji
+- /js
+    - frontendController.js         #Plik javascript zarządzający stroną główną
+    - analyticsController.js        #Plik javascript zarządzający stroną analityczną</p>
 <p>Frontend komunikuję się ze stroną serwerową (backendem) za pomocą WebSocketów. Przyjmowane są wiadomości o następującej strukturze:</p>
-<pre><code>    ```json
-        {
-            MessageDate: ISOString,
-            DeviceId: String,
-            IotData: {
-                humidity: Double,
-                temperature: Double,
-                light: Double,
-                ground: Double,
-            },
-        }
-    ```
-</code></pre>
+<p>{
+    MessageDate: ISOString,
+    DeviceId: String,
+    IotData: {
+        humidity: Double,
+        temperature: Double,
+        light: Double,
+        ground: Double,
+    },
+}</p>
 <p>Po otrzymaniu następującego komunikatu aplikacja aktualizuje swoje dane i wyświetla je wraz z pomocą modułu Chart.js</p>
               
             </div>
