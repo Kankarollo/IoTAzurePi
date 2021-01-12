@@ -1,0 +1,15 @@
+.top-buffer1 { 
+    margin-top:20px; 
+}
+
+.top-buffer5 { 
+    margin-top:5px; 
+}
+
+#ex1Slider .slider-selection {
+	background: #f5e505;
+}
+
+.alert {
+    display: none;
+}

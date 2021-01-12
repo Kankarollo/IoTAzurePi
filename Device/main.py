@@ -1,31 +1,15 @@
 from send_message import send_single_message
 from receive_message import receive_cloud_message
 from handle_sensor_data import read_data
+from rpi_hardware_interface import setup_RPi, tearDown_RPi
 import asyncio
-import RPi.GPIO as GPIO
 import logging
 import datetime
 import os
 
-
 def setup(file_name):
     logging.basicConfig(filename=file_name)
-    # RPi Setup
-    # ustawienie trybu numeracji pinów
-    GPIO.setmode(GPIO.BCM)
-    # ustawienie pinów jako OUT
-    try:
-        GPIO.setup(22, GPIO.OUT) # pompka
-        GPIO.output(22, GPIO.LOW)
-    except:
-        logging.warning("-W- GPIO 22 (Pump) is already in use")
-    try:
-        GPIO.setup(27, GPIO.OUT) # LED
-        GPIO.output(27, GPIO.LOW)
-    except:
-        logging.warning("-W- GPIO 27 (LED) is already in use")
-    
-    
+    setup_RPi()   
 
 async def run():
     await asyncio.gather(
@@ -37,7 +21,7 @@ if __name__ == "__main__":
     log_file = str(datetime.datetime.now())+".log"
     setup(log_file)
     asyncio.run(run())
-    GPIO.cleanup()
     logging.shutdown()
+    tearDown_RPi()
     if os.stat(log_file).st_size == 0 : 
         os.remove(log_file)

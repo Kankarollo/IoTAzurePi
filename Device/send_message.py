@@ -9,7 +9,6 @@ import json
 
 async def send_single_message(message_body):
     device_client = IoTHubDeviceClient.create_from_connection_string(DEVICE_CONN_STRING)
-
     await device_client.connect()
 
     message = Message(json.dumps(message_body), content_type='application/json')
@@ -20,3 +19,4 @@ async def send_single_message(message_body):
 if __name__ == "__main__":
     # jesli nie ma sie podlaczonego rpi to zmienic na generate_data
     asyncio.run(send_single_message(read_data()))
+    # asyncio.run(send_single_message(generate_data()))

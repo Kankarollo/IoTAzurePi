@@ -1,4 +1,3 @@
-import os
 import asyncio
 from six.moves import input
 import threading
@@ -17,7 +16,7 @@ async def receive_cloud_message():
             message = await device_client.receive_message()
             print("the data in the message received was ")
             print(message.data)
-            analyze_msg(message.data)
+            await analyze_msg(message.data)
 
     def stdin_listener():
         while True:
